@@ -39,21 +39,40 @@ $(() => {
     const $score2 = $('score2');
     const $strike1 = $('strike1');
     const $strike2 = $('strike2');
-    const $answer1 = $('answer1');
-    const $answer2 = $('answer2');
-    const $answer3 = $('answer3');
-    const $answer4 = $('answer4');
-    const $answer5 = $('answer5');
-    const $answer6 = $('answer6');
-    const $answer7 = $('answer7');
-    const $answer8 = $('answer8');
+    const $answer1 = $('.answer1');
+    const $answer2 = $('.answer2');
+    const $answer3 = $('.answer3');
+    const $answer4 = $('.answer4');
+    const $answer5 = $('.answer5');
+    const $answer6 = $('.answer6');
+    const $answer7 = $('.answer7');
+    const $answer8 = $('.answer8');
     let totalPoints = 0;
     let cardSet = 0;
+    let answers = [];
+
+
+    // TO DO: add as a function or use MAP??
+    for (let i = 0; i < questionCards[cardSet].answer.length; i++){
+        answers.push(`${questionCards[cardSet].answer[i][0]}`);
+    }
+
+    // const getAnswers = () => {
+    //     for (let i = 0; i < questionCards[cardSet].answer.length; i++){
+    //         answers.push(`${questionCards[cardSet].answer[i][0]}`);
+    //     }
+    // }
+    console.log(answers);
+
+    const checkAnswer = () => {
+        if (answers.includes($input.val())){
+            const i = answers.indexOf(`${$input.val()}`)
+            $(`.answer${i}`)
+        }
+    }
 
     $startRound.on('click', (event) => {
         event.preventDefault();
-        console.log('started the round');
-        
         $question.html(`${questionCards[cardSet].question}`);
 
     })
@@ -64,6 +83,7 @@ $(() => {
         if($input.val() === questionCards[cardSet].answer[0][0]){
             totalPoints += questionCards[cardSet].answer[0][1];
             $points.html(`${totalPoints}`);
+            $answer1.html(`${questionCards[cardSet].answer[0][0]}`);
         }
     })
 })
