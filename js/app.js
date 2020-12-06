@@ -7,6 +7,12 @@ class Team {
         this.points = 0;
         this.strikes = 0;
     }
+    addPoints() {
+        this.points += totalPoints;
+    }
+    addStrike() {
+        this.strikes++;
+    }
 }
 
 const teamUno = new Team('Team Uno', 'sandy', 'tina', 'judy');
@@ -36,9 +42,9 @@ $(() => {
     const $input = $('#answer-box');
     const $points = $('.points');
     const $score1 = $('.score1');
-    const $score2 = $('score2');
-    const $strike1 = $('strike1');
-    const $strike2 = $('strike2');
+    const $score2 = $('.score2');
+    const $strike1 = $('.strike1');
+    const $strike2 = $('.strike2');
     const $answer1 = $('.answer1');
     const $answer2 = $('.answer2');
     const $answer3 = $('.answer3');
@@ -50,6 +56,7 @@ $(() => {
     let totalPoints = 0;
     let cardSet = 0;
     let answers = [];
+
 
 
     // TO DO: add as a function or use MAP??
@@ -64,10 +71,17 @@ $(() => {
     // }
     console.log(answers);
 
-    const checkAnswer = () => {
-        if (answers.includes($input.val())){
-            const i = answers.indexOf(`${$input.val()}`)
-            $(`.answer${i}`)
+    const checkAnswer = (input) => {
+        console.log('answer checked');
+        if (answers.includes(input)){
+            const i = answers.indexOf(input)
+            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]}`)
+            totalPoints += questionCards[cardSet].answer[i][1];
+            $points.html(`${totalPoints}`);
+        }else{
+            alert ('Answer not on the board! You get a strike.');
+            teamUno.addStrike();
+            $strike1.html(`${teamUno.strikes}`);
         }
     }
 
@@ -79,11 +93,11 @@ $(() => {
 
     $form.on('submit', (event) => {
         event.preventDefault();
-        console.log('submitted answer');
-        if($input.val() === questionCards[cardSet].answer[0][0]){
-            totalPoints += questionCards[cardSet].answer[0][1];
-            $points.html(`${totalPoints}`);
-            $answer1.html(`${questionCards[cardSet].answer[0][0]}`);
-        }
+        checkAnswer($input.val());
+        // if($input.val() === questionCards[cardSet].answer[0][0]){
+        //     totalPoints += questionCards[cardSet].answer[0][1];
+        //     $points.html(`${totalPoints}`);
+        //     $answer1.html(`${questionCards[cardSet].answer[0][0]}`);
+        // }
     })
 })
