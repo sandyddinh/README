@@ -9,9 +9,67 @@
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Family Feud</title>
 </head>
 <body>
+    <header>
+        <h1>Family Feud</h1>
+    </header>
+
+    <section id="round">
+        <h2>
+            ROUND 1
+        </h2>
+        <input type="button" id="start-round" value="Start the Round!"/>
+        <p>Points: <span class="points"> </span></p> 
+    </section>
+
+    <section id="Question">
+        <p>Question: <span class="question"> </span></p>
+        
+    </section>
+
+    <section id="answer">
+        <form>
+            <label>
+                Answer:
+                <input type="text" id="answer-box">
+            </label>
+            <input type="submit" id="submit-button" value="Sumbit"/>
+        </form>
+        <p>Top Answers:</p>
+        <ol>
+            <li class="answer1"></li>
+            <li class="answer2"></li>
+            <li class="answer3"></li>
+            <li class="answer4"></li>
+            <li class="answer5"></li>
+            <li class="answer6"></li>
+            <li class="answer7"></li>
+            <li class="answer8"></li>
+        </ol>
+    </section>
     
+    <div id="team1">
+        <h2>TEAM 1</h2>
+        <ul>
+            <li></li>
+        </ul>
+        <p class="score1">Score: </p>
+        <p class="strike1">Strikes: </p>
+    </div>
+
+    <div id="team2">
+        <h2>TEAM 2</h2>
+        <ul>
+            <li></li>
+        </ul>
+        <p class="score2">Score: </p>
+        <p class="strike2">Strikes: </p>
+    </div>
+
+
+
+
 </body>
 </html>
