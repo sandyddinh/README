@@ -1,9 +1,8 @@
 class Team {
-    constructor(teamName, player1, player2, player3){
-        this.teamName = teamName;
-        this.player1 = player1;
-        this.player2 = player2;
-        this.player4 = player3;
+    constructor(num, name, player1, player2, player3){
+        this.number = num;
+        this.name = name;
+        this.players = [player1, player2, player3];
         this.points = 0;
         this.strikes = 0;
     }
@@ -18,8 +17,8 @@ class Team {
     }
 }
 
-const team1 = new Team('Ladies', 'sandy', 'tina', 'judy');
-const team2 = new Team('Gents', 'matt', 'winston', 'apollo');
+const team1 = new Team(1, 'Ladies', 'sandy', 'tina', 'judy');
+const team2 = new Team(2, 'Gents', 'matt', 'winston', 'apollo');
 console.log(team1);
 console.log(team2);
 
@@ -41,6 +40,7 @@ const questionCards = [
 
 
 $(() => {
+    const $startGame = $('#start-game');
     const $startRound = $('#start-round');
     const $question = $('.question');
     const $form = $('form');
@@ -58,6 +58,7 @@ $(() => {
     const $answer6 = $('.answer6');
     const $answer7 = $('.answer7');
     const $answer8 = $('.answer8');
+    const $currentTeam = $('.currentTeam');
     let totalPoints = 0;
     let cardSet = 0;
     let answers = [];
@@ -79,10 +80,12 @@ $(() => {
 
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
-            alert(`Team ${currentTeam.teamName} has 3 strikes! Team ${otherTeam.teamName} has a chance to steal the points!`);
+            alert(`Team ${currentTeam.name} has 3 strikes! Team ${otherTeam.name} has a chance to steal the points!`);
             let teamHolder = currentTeam;
             currentTeam = otherTeam;
             otherTeam = teamHolder;
+            $currentTeam.html(`Team ${currentTeam.name}`);
+            // answer();
         }
     }
 
@@ -95,7 +98,7 @@ $(() => {
             $points.html(`${totalPoints}`);
         }else{
             team.addStrike();
-            alert (`Answer not on the board! Team ${team.strikes} gets a strike. Total strikes: ${team.strikes}`);
+            alert (`Answer not on the board! Team ${team.name} gets a strike. Total strikes: ${team.strikes}`);
             $(`.strike${teamNum}`).html(`${team.strikes}`);
             checkStrikes();
         }
@@ -104,11 +107,23 @@ $(() => {
     $startRound.on('click', (event) => {
         event.preventDefault();
         $question.html(`${questionCards[cardSet].question}`);
-
+        $currentTeam.html(`Team ${currentTeam.name}`)
     })
 
-    const team1Answer = $form.on('submit', (event) => {
+    const answer = $form.on('submit', (event) => {
         event.preventDefault();
-        checkAnswer(1, $input.val());
+        checkAnswer(currentTeam.number, $input.val());
     })
+
+    $startGame.on('click', (event) => {
+        event.preventDefault();
+        $currentTeam.html(`Team ${currentTeam.name}`);
+        for(let i = 0; i < team1.players.length; i++){
+            const $li1 = $('<li>').text(team1.players[i]);
+            const $li2 = $('<li>').text(team2.players[i]);
+            $('#team1Players').append($li1);
+            $('#team2Players').append($li2);
+        }
+    })
+
 })

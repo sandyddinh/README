@@ -16,11 +16,16 @@
         <h1>Family Feud</h1>
     </header>
 
+    <section id="main">
+        <input type="button" id="start-game" value="Start Game!"/>
+    </section>
+
     <section id="round">
         <h2>
             ROUND 1
         </h2>
         <input type="button" id="start-round" value="Start the Round!"/>
+        <p>Current Team: <span class="currentTeam"> </span></p>
         <p>Points: <span class="points"> </span></p> 
     </section>
 
@@ -52,18 +57,14 @@
     
     <div id="team1">
         <h2>TEAM 1</h2>
-        <ul>
-            <li></li>
-        </ul>
+        <ul id="team1Players"></ul>
         <p>Score: <span class="score1"></span></p>
         <p>Strikes: <span class="strike1"></span></p>
     </div>
 
     <div id="team2">
         <h2>TEAM 2</h2>
-        <ul>
-            <li></li>
-        </ul>
+        <ul id="team2Players"></ul>
         <p>Score: <span class="score2"></span></p>
         <p>Strikes: <span class="strike2"></span></p>
     </div>
