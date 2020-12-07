@@ -51,8 +51,10 @@ $(() => {
     // ---------- Game ---------- //
     const $startingForm = $('#submit-button');
     const $startRound = $('#start-round');
+    const $currentTeam1 = $('#currentTeam1');
+    const $currentTeam2 = $('#currentTeam2');
     const $question = $('.question');
-    const $answerForm = $('.answer-form');
+    const $answerForm = $('#answer-form');
     const $input = $('#answer-box');
     const $points = $('.points');
     const $score1 = $('.score1');
@@ -63,8 +65,8 @@ $(() => {
     let totalPoints = 0;
     let cardSet = 0;
     let answers = [];
-    let currentTeam = team1;
-    let otherTeam = team2;
+    var currentTeam = null;
+    var otherTeam = null;
 
 
     // TO DO: add as a function or use MAP??
@@ -91,30 +93,30 @@ $(() => {
     }
 
     const checkAnswer = (teamNum, input) => {
-        const team = eval(`team${teamNum}`);
         if (answers.includes(input)){
             const i = answers.indexOf(input);
             $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
         }else{
-            team.addStrike();
-            alert (`Answer not on the board! Team ${team.name} gets a strike. Total strikes: ${team.strikes}`);
-            $(`.strike${teamNum}`).html(`${team.strikes}`);
+            currentTeam.addStrike();
+            alert (`Answer not on the board! Team ${currentTeam.name} gets a strike. Total strikes: ${currentTeam.strikes}`);
+            $(`.strike${teamNum}`).html(`${currentTeam.strikes}`);
             checkStrikes();
         }
     }
 
+
     $startRound.on('click', (event) => {
         event.preventDefault();
         $question.html(`${questionCards[cardSet].question}`);
-        $currentTeam.html(`Team ${currentTeam.name}`)
-        console.log(`current team is ${currentTeam.name}`)
+        
     })
 
     const answer = $answerForm.on('submit', (event) => {
         event.preventDefault();
         checkAnswer(currentTeam.number, $input.val());
+        console.log(`answered! currentTeam is ${currentTeam.number} ${currentTeam.name}`)
     })
 
 
@@ -134,6 +136,13 @@ $(() => {
             $('#team2Players').append($li2);
         }
         $modal.css('display', 'none');
+        const randomTeamNum = Math.floor(Math.random() * 2) + 1;
+        let otherTeamNum = null;
+        randomTeamNum === 1 ? (otherTeamNum = 2) : (otherTeamNum = 1);
+        currentTeam = eval(`team${randomTeamNum}`);
+        otherTeam = eval(`team${otherTeamNum}`);
+        $currentTeam.html(`Team ${currentTeam.name}`);
+        console.log(`random team number is ${randomTeamNum} and current team is ${currentTeam.name} and other team is ${otherTeam.name} `)
     })
 
 })
