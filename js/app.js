@@ -70,14 +70,14 @@ $(() => {
     const $strike1 = $('.strike1');
     const $strike2 = $('.strike2');
     const $currentTeam = $('.currentTeam');
-    var team1 = null;
-    var team2 = null;
+    let team1 = null;
+    let team2 = null;
     let totalPoints = 0;
     let cardSet = 0;
     let answers = [];
-    var currentTeam = null;
-    var otherTeam = null;
-    var roundNum = 1;
+    let currentTeam = null;
+    let otherTeam = null;
+    let roundNum = 1;
 
 
     // TO DO: Use MAP??
@@ -164,7 +164,7 @@ $(() => {
     const answer = $answerForm.on('submit', (event) => {
         event.preventDefault();
         checkAnswer(currentTeam.number, $input.val());
-        console.log(`answered! currentTeam is ${currentTeam.number} ${currentTeam.name}`)
+        $(event.currentTarget).trigger('reset');
     })
 
     const pickTeamToStart = () => {
