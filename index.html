@@ -16,10 +16,8 @@
         <h1>Family Feud</h1>
     </header>
 
-    <button id="openModal">New Game</button>
     <div id="modal">
       <div id="modal-textbox">
-        <a id="close" href="#">Close</a>
         <h1>Welcome to Family Fued</h1>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum veniam earum, quas porro non ullam, odit nulla adipisci provident, rem voluptate atque aperiam quasi quo similique commodi sequi iure perspiciatis?</p>
           <form id="starting-form">
@@ -42,10 +40,6 @@
       </div>
     </div>
 
-    <section id="main">
-        <input type="button" id="start-game" value="Start Game!"/>
-    </section>
-
     <section id="round">
         <h2>
             ROUND 1
@@ -66,7 +60,7 @@
                 Answer:
                 <input type="text" id="answer-box">
             </label>
-            <input type="submit" id="submit-button" value="Sumbit"/>
+            <input type="submit" id="submit-answer-button" value="Sumbit"/>
         </form>
         <p>Top Answers:</p>
         <ol>
@@ -82,14 +76,14 @@
     </section>
     
     <div id="team1">
-        <h2>TEAM 1</h2>
+        <h2>TEAM 1: <span class="teamName1"></span></h2>
         <ul id="team1Players"></ul>
         <p>Score: <span class="score1"></span></p>
         <p>Strikes: <span class="strike1"></span></p>
     </div>
 
     <div id="team2">
-        <h2>TEAM 2</h2>
+        <h2>TEAM 2: <span class="teamName2"></span></h2>
         <ul id="team2Players"></ul>
         <p>Score: <span class="score2"></span></p>
         <p>Strikes: <span class="strike2"></span></p>

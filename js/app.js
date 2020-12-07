@@ -17,10 +17,10 @@ class Team {
     }
 }
 
-const team1 = new Team(1, 'Ladies', 'sandy', 'tina', 'judy');
-const team2 = new Team(2, 'Gents', 'matt', 'winston', 'apollo');
-console.log(team1);
-console.log(team2);
+// const team1 = new Team(1, 'Ladies', 'sandy', 'tina', 'judy');
+// const team2 = new Team(2, 'Gents', 'matt', 'winston', 'apollo');
+// console.log(team1);
+// console.log(team2);
 
 const questionCards = [
     {
@@ -40,33 +40,16 @@ const questionCards = [
 
 
 $(() => {
-    //Grabbing Elements
-    const $openBtn = $('#openModal');
+    // ---------- Modal ---------- //
     const $modal = $('#modal');
-    const $closeBtn = $('#close');
 
-    //Event Handlers
     const openModal = () => {
     $modal.css('display', 'block');
     }
-
     setTimeout(openModal, 1000);
 
-    const closeModal = () => {
-    $modal.css('display', 'none');
-    }
-
-    //Event Listeners
-    $openBtn.on('click', openModal);
-
-    $closeBtn.on('click', closeModal);
-
-
-
-
-
-
-    const $startGame = $('#start-game');
+    // ---------- Game ---------- //
+    const $startingForm = $('#submit-button');
     const $startRound = $('#start-round');
     const $question = $('.question');
     const $answerForm = $('.answer-form');
@@ -126,6 +109,7 @@ $(() => {
         event.preventDefault();
         $question.html(`${questionCards[cardSet].question}`);
         $currentTeam.html(`Team ${currentTeam.name}`)
+        console.log(`current team is ${currentTeam.name}`)
     })
 
     const answer = $answerForm.on('submit', (event) => {
@@ -133,15 +117,23 @@ $(() => {
         checkAnswer(currentTeam.number, $input.val());
     })
 
-    $startGame.on('click', (event) => {
+
+    $startingForm.on('click', (event) => {
         event.preventDefault();
-        $currentTeam.html(`Team ${currentTeam.name}`);
+        console.log(`started the form`)
+        const team1 = new Team (1, $('#team1-name-box').val(), $('#team1-player1-box').val(), $('#team1-player2-box').val(), $('#team1-player3-box').val()) 
+        const team2 = new Team (2, $('#team2-name-box').val(), $('#team2-player1-box').val(), $('#team2-player2-box').val(), $('#team2-player3-box').val()) 
+        console.log(team1);
+        console.log(team2);
+        $('.teamName1').html(`Team ${team1.name}`);
+        $('.teamName2').html(`Team ${team2.name}`);
         for(let i = 0; i < team1.players.length; i++){
             const $li1 = $('<li>').text(team1.players[i]);
             const $li2 = $('<li>').text(team2.players[i]);
             $('#team1Players').append($li1);
             $('#team2Players').append($li2);
         }
+        $modal.css('display', 'none');
     })
 
 })
