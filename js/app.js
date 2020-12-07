@@ -18,8 +18,8 @@ class Team {
     }
 }
 
-const team1 = new Team('Team Uno', 'sandy', 'tina', 'judy');
-const team2 = new Team('Team Dos', 'matt', 'winston', 'apollo');
+const team1 = new Team('Ladies', 'sandy', 'tina', 'judy');
+const team2 = new Team('Gents', 'matt', 'winston', 'apollo');
 console.log(team1);
 console.log(team2);
 
@@ -61,7 +61,8 @@ $(() => {
     let totalPoints = 0;
     let cardSet = 0;
     let answers = [];
-
+    let currentTeam = team1;
+    let otherTeam = team2;
 
 
     // TO DO: add as a function or use MAP??
@@ -76,6 +77,15 @@ $(() => {
     // }
     console.log(answers);
 
+    const checkStrikes = () =>{
+        if (currentTeam.strikes === 3){
+            alert(`Team ${currentTeam.teamName} has 3 strikes! Team ${otherTeam.teamName} has a chance to steal the points!`);
+            let teamHolder = currentTeam;
+            currentTeam = otherTeam;
+            otherTeam = teamHolder;
+        }
+    }
+
     const checkAnswer = (teamNum, input) => {
         const team = eval(`team${teamNum}`);
         if (answers.includes(input)){
@@ -84,9 +94,10 @@ $(() => {
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
         }else{
-            alert ('Answer not on the board! You get a strike.');
             team.addStrike();
+            alert (`Answer not on the board! Team ${team.strikes} gets a strike. Total strikes: ${team.strikes}`);
             $(`.strike${teamNum}`).html(`${team.strikes}`);
+            checkStrikes();
         }
     }
 
