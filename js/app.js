@@ -17,11 +17,6 @@ class Team {
     }
 }
 
-// const team1 = new Team(1, 'Ladies', 'sandy', 'tina', 'judy');
-// const team2 = new Team(2, 'Gents', 'matt', 'winston', 'apollo');
-// console.log(team1);
-// console.log(team2);
-
 const questionCards = [
     {
         question: "What is the most popular tv show of 2020?",
@@ -85,19 +80,12 @@ $(() => {
     var roundNum = 1;
 
 
-    // TO DO: add as a function or use MAP??
+    // TO DO: Use MAP??
     const getAnswerList = () => {
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
             answers.push(`${questionCards[cardSet].answer[i][0]}`);
         }
     }
-
-    // const getAnswers = () => {
-    //     for (let i = 0; i < questionCards[cardSet].answer.length; i++){
-    //         answers.push(`${questionCards[cardSet].answer[i][0]}`);
-    //     }
-    // }
-    console.log(answers);
 
     const startNewRound = () => {
         roundNum++;
@@ -113,7 +101,6 @@ $(() => {
         team1.strikes = 0;
         team2.strikes = 0;
     }
-
 
     const updateScores = () => {
         $score1.html(`${team1.points}`);
@@ -140,10 +127,6 @@ $(() => {
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
             alert(`Team ${currentTeam.name} has 3 strikes! Team ${otherTeam.name} has a chance to steal the points!`);
-            // const teamHolder = currentTeam;
-            // currentTeam = otherTeam;
-            // otherTeam = teamHolder;
-            // $currentTeam.html(`Team ${currentTeam.name}`);
             stealPoints();
         }
     }
