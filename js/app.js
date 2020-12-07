@@ -35,6 +35,19 @@ const questionCards = [
             ["Emily in Paris", 10],
             ["Grey's Anatomy", 8]
         ]
+    },
+    {
+        question: "What is the most popular song of 2020?",
+        answer: [
+            ["a", 45],
+            ["b", 30],
+            ["c", 25],
+            ["d", 23],
+            ["e", 17],
+            ["f", 15],
+            ["g", 10],
+            ["h", 8]
+        ]
     }
 ]
 
@@ -69,11 +82,14 @@ $(() => {
     let answers = [];
     var currentTeam = null;
     var otherTeam = null;
+    var roundNum = 1;
 
 
     // TO DO: add as a function or use MAP??
-    for (let i = 0; i < questionCards[cardSet].answer.length; i++){
-        answers.push(`${questionCards[cardSet].answer[i][0]}`);
+    const getAnswerList = () => {
+        for (let i = 0; i < questionCards[cardSet].answer.length; i++){
+            answers.push(`${questionCards[cardSet].answer[i][0]}`);
+        }
     }
 
     // const getAnswers = () => {
@@ -83,9 +99,26 @@ $(() => {
     // }
     console.log(answers);
 
+    const startNewRound = () => {
+        roundNum++;
+        $('.roundNum').html(`${roundNum}`);
+        cardSet ++;
+        alert(`New Round is about to begin...`)
+        const teamHolder = currentTeam;
+        currentTeam = otherTeam;
+        otherTeam = teamHolder;
+        $currentTeam.html(`Team ${currentTeam.name}`);
+        totalPoints = 0;
+        $points.html(`${totalPoints}`);
+        team1.strikes = 0;
+        team2.strikes = 0;
+    }
+
+
     const updateScores = () => {
         $score1.html(`${team1.points}`);
         $score2.html(`${team2.points}`);
+        startNewRound();
     }
 
     const stealPoints = () => {
@@ -115,12 +148,21 @@ $(() => {
         }
     }
 
+    const isRoundOver = () => {
+        if (answers===[]){
+            alert(`Round X is over. ${currentTeam.name} takes the points!`)
+            updateScores();
+        } 
+    }
+    
     const checkAnswer = (teamNum, input) => {
         if (answers.includes(input)){
             const i = answers.indexOf(input);
+            answers.splice(i, 1);
             $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
+            isRoundOver();
         }else{
             currentTeam.addStrike();
             alert (`Answer not on the board! Team ${currentTeam.name} gets a strike. Total strikes: ${currentTeam.strikes}`);
@@ -133,7 +175,7 @@ $(() => {
     $startRound.on('click', (event) => {
         event.preventDefault();
         $question.html(`${questionCards[cardSet].question}`);
-        
+        getAnswerList();
     })
 
     const answer = $answerForm.on('submit', (event) => {
@@ -165,6 +207,8 @@ $(() => {
         currentTeam = eval(`team${randomTeamNum}`);
         otherTeam = eval(`team${otherTeamNum}`);
         $currentTeam.html(`Team ${currentTeam.name}`);
+        $('.roundNum').html(`${roundNum}`);
+        getAnswerList();
         console.log(`random team number is ${randomTeamNum} and current team is ${currentTeam.name} and other team is ${otherTeam.name} `)
     })
 
