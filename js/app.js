@@ -7,6 +7,9 @@ class Team {
         this.points = 0;
         this.strikes = 0;
     }
+    play() {
+        submitAnswer();
+    }
     addPoints() {
         this.points += totalPoints;
     }
@@ -15,8 +18,10 @@ class Team {
     }
 }
 
-const teamUno = new Team('Team Uno', 'sandy', 'tina', 'judy');
-console.log(teamUno);
+const team1 = new Team('Team Uno', 'sandy', 'tina', 'judy');
+const team2 = new Team('Team Dos', 'matt', 'winston', 'apollo');
+console.log(team1);
+console.log(team2);
 
 const questionCards = [
     {
@@ -71,17 +76,17 @@ $(() => {
     // }
     console.log(answers);
 
-    const checkAnswer = (input) => {
-        console.log('answer checked');
+    const checkAnswer = (teamNum, input) => {
+        const team = eval(`team${teamNum}`);
         if (answers.includes(input)){
-            const i = answers.indexOf(input)
-            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]}`)
+            const i = answers.indexOf(input);
+            $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
         }else{
             alert ('Answer not on the board! You get a strike.');
-            teamUno.addStrike();
-            $strike1.html(`${teamUno.strikes}`);
+            team.addStrike();
+            $(`.strike${teamNum}`).html(`${team.strikes}`);
         }
     }
 
@@ -91,13 +96,8 @@ $(() => {
 
     })
 
-    $form.on('submit', (event) => {
+    const team1Answer = $form.on('submit', (event) => {
         event.preventDefault();
-        checkAnswer($input.val());
-        // if($input.val() === questionCards[cardSet].answer[0][0]){
-        //     totalPoints += questionCards[cardSet].answer[0][1];
-        //     $points.html(`${totalPoints}`);
-        //     $answer1.html(`${questionCards[cardSet].answer[0][0]}`);
-        // }
+        checkAnswer(1, $input.val());
     })
 })
