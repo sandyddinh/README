@@ -40,24 +40,42 @@ const questionCards = [
 
 
 $(() => {
+    //Grabbing Elements
+    const $openBtn = $('#openModal');
+    const $modal = $('#modal');
+    const $closeBtn = $('#close');
+
+    //Event Handlers
+    const openModal = () => {
+    $modal.css('display', 'block');
+    }
+
+    setTimeout(openModal, 1000);
+
+    const closeModal = () => {
+    $modal.css('display', 'none');
+    }
+
+    //Event Listeners
+    $openBtn.on('click', openModal);
+
+    $closeBtn.on('click', closeModal);
+
+
+
+
+
+
     const $startGame = $('#start-game');
     const $startRound = $('#start-round');
     const $question = $('.question');
-    const $form = $('form');
+    const $answerForm = $('.answer-form');
     const $input = $('#answer-box');
     const $points = $('.points');
     const $score1 = $('.score1');
     const $score2 = $('.score2');
     const $strike1 = $('.strike1');
     const $strike2 = $('.strike2');
-    const $answer1 = $('.answer1');
-    const $answer2 = $('.answer2');
-    const $answer3 = $('.answer3');
-    const $answer4 = $('.answer4');
-    const $answer5 = $('.answer5');
-    const $answer6 = $('.answer6');
-    const $answer7 = $('.answer7');
-    const $answer8 = $('.answer8');
     const $currentTeam = $('.currentTeam');
     let totalPoints = 0;
     let cardSet = 0;
@@ -110,7 +128,7 @@ $(() => {
         $currentTeam.html(`Team ${currentTeam.name}`)
     })
 
-    const answer = $form.on('submit', (event) => {
+    const answer = $answerForm.on('submit', (event) => {
         event.preventDefault();
         checkAnswer(currentTeam.number, $input.val());
     })
