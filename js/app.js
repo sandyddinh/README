@@ -62,6 +62,8 @@ $(() => {
     const $strike1 = $('.strike1');
     const $strike2 = $('.strike2');
     const $currentTeam = $('.currentTeam');
+    var team1 = null;
+    var team2 = null;
     let totalPoints = 0;
     let cardSet = 0;
     let answers = [];
@@ -81,14 +83,35 @@ $(() => {
     // }
     console.log(answers);
 
+    const updateScores = () => {
+        $score1.html(`${team1.score}`);
+        $score2.html(`${team2.score}`);
+    }
+
+    const stealPoints = () => {
+        const answerToSteal = prompt(`${otherTeam.name}, what is your answer to steal the points?`);
+        if (answers.includes(answerToSteal)){
+            const i = answers.indexOf(answerToSteal);
+            $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
+            totalPoints += questionCards[cardSet].answer[i][1];
+            $points.html(`${totalPoints}`);
+            alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steals the points!`);
+            otherTeam.points += totalPoints;
+        } else {
+            alert(`${otherTeam.name} got the incorrect answer! ${current.name} gets the points!`);
+            currentTeam.points += totalPoints;
+        }
+        updateScores();
+    }
+
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
             alert(`Team ${currentTeam.name} has 3 strikes! Team ${otherTeam.name} has a chance to steal the points!`);
-            let teamHolder = currentTeam;
-            currentTeam = otherTeam;
-            otherTeam = teamHolder;
-            $currentTeam.html(`Team ${currentTeam.name}`);
-            // answer();
+            // const teamHolder = currentTeam;
+            // currentTeam = otherTeam;
+            // otherTeam = teamHolder;
+            // $currentTeam.html(`Team ${currentTeam.name}`);
+            stealPoints();
         }
     }
 
@@ -123,8 +146,8 @@ $(() => {
     $startingForm.on('click', (event) => {
         event.preventDefault();
         console.log(`started the form`)
-        const team1 = new Team (1, $('#team1-name-box').val(), $('#team1-player1-box').val(), $('#team1-player2-box').val(), $('#team1-player3-box').val()) 
-        const team2 = new Team (2, $('#team2-name-box').val(), $('#team2-player1-box').val(), $('#team2-player2-box').val(), $('#team2-player3-box').val()) 
+        team1 = new Team (1, $('#team1-name-box').val(), $('#team1-player1-box').val(), $('#team1-player2-box').val(), $('#team1-player3-box').val()) 
+        team2 = new Team (2, $('#team2-name-box').val(), $('#team2-player1-box').val(), $('#team2-player2-box').val(), $('#team2-player3-box').val()) 
         console.log(team1);
         console.log(team2);
         $('.teamName1').html(`Team ${team1.name}`);
