@@ -184,14 +184,18 @@ $(() => {
         console.log(`answered! currentTeam is ${currentTeam.number} ${currentTeam.name}`)
     })
 
+    const pickTeamToStart = () => {
+        const randomTeamNum = Math.floor(Math.random() * 2) + 1;
+        let otherTeamNum = null;
+        randomTeamNum === 1 ? (otherTeamNum = 2) : (otherTeamNum = 1);
+        currentTeam = eval(`team${randomTeamNum}`);
+        otherTeam = eval(`team${otherTeamNum}`);
+        $currentTeam.html(`Team ${currentTeam.name}`);
+    }
 
-    $startingForm.on('click', (event) => {
-        event.preventDefault();
-        console.log(`started the form`)
+    const makeTeams = () => {
         team1 = new Team (1, $('#team1-name-box').val(), $('#team1-player1-box').val(), $('#team1-player2-box').val(), $('#team1-player3-box').val()) 
         team2 = new Team (2, $('#team2-name-box').val(), $('#team2-player1-box').val(), $('#team2-player2-box').val(), $('#team2-player3-box').val()) 
-        console.log(team1);
-        console.log(team2);
         $('.teamName1').html(`Team ${team1.name}`);
         $('.teamName2').html(`Team ${team2.name}`);
         for(let i = 0; i < team1.players.length; i++){
@@ -200,16 +204,15 @@ $(() => {
             $('#team1Players').append($li1);
             $('#team2Players').append($li2);
         }
+    }
+
+    $startingForm.on('click', (event) => {
+        event.preventDefault();
+        makeTeams();
         $modal.css('display', 'none');
-        const randomTeamNum = Math.floor(Math.random() * 2) + 1;
-        let otherTeamNum = null;
-        randomTeamNum === 1 ? (otherTeamNum = 2) : (otherTeamNum = 1);
-        currentTeam = eval(`team${randomTeamNum}`);
-        otherTeam = eval(`team${otherTeamNum}`);
-        $currentTeam.html(`Team ${currentTeam.name}`);
         $('.roundNum').html(`${roundNum}`);
+        pickTeamToStart();
         getAnswerList();
-        console.log(`random team number is ${randomTeamNum} and current team is ${currentTeam.name} and other team is ${otherTeam.name} `)
     })
 
 })
