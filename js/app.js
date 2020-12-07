@@ -84,8 +84,8 @@ $(() => {
     console.log(answers);
 
     const updateScores = () => {
-        $score1.html(`${team1.score}`);
-        $score2.html(`${team2.score}`);
+        $score1.html(`${team1.points}`);
+        $score2.html(`${team2.points}`);
     }
 
     const stealPoints = () => {
