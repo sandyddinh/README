@@ -43,6 +43,19 @@ const questionCards = [
             ["g", 10],
             ["h", 8]
         ]
+    },
+    {
+        question: "What is the most popular movie of 2020?",
+        answer: [
+            ["1", 45],
+            ["2", 30],
+            ["3", 25],
+            ["4", 23],
+            ["5", 17],
+            ["6", 15],
+            ["7", 10],
+            ["8", 8]
+        ]
     }
 ]
 
@@ -87,6 +100,17 @@ $(() => {
         }
     }
 
+    const endGame = () => {
+        if (team1.points === team2.points){
+            alert(`3 rounds are over and it's a tie with a total of ${team1.points} points!!`)
+        } else if (team1.points > team2.points) {
+            alert(`3 rounds are over. With a total of ${team1.points} points, the winner is.......... ${team1.name} !!!`)
+        } else {
+            alert(`3 rounds are over. With a total of ${team2.points} points, the winner is.......... ${team2.name} !!!`)
+        }
+        
+    }
+
     const startNewRound = () => {
         roundNum++;
         $('.roundNum').html(`${roundNum}`);
@@ -105,7 +129,11 @@ $(() => {
     const updateScores = () => {
         $score1.html(`${team1.points}`);
         $score2.html(`${team2.points}`);
-        startNewRound();
+        if (roundNum===3){
+            endGame();
+        }else{
+            startNewRound();
+        }
     }
 
     const stealPoints = () => {
@@ -133,7 +161,7 @@ $(() => {
 
     const isRoundOver = () => {
         if (answers===[]){
-            alert(`Round X is over. ${currentTeam.name} takes the points!`)
+            alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`)
             updateScores();
         } 
     }
