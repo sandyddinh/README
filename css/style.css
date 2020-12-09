@@ -19,6 +19,7 @@ body {
     background-image: linear-gradient(var(--bg-color), var(--accent-color));
     font-family: 'Bebas Neue', cursive;
     overflow: hidden;
+    height: 100vh;
 }
 
 h1 {
@@ -71,33 +72,114 @@ h2{
     justify-content: space-around;
     /* position: relative; */
     text-align: center;
+    height: 60vh;
+    align-items: center; /* align vertically */
 }
 
-#team1 {
-    order: 1;
-    border: 2px solid black;
-    display: flex;
-  justify-content: center;
-  flex-direction: column;
-    
-}
 
 #board {
     order: 2;
     border: 2px solid black;
+    width: 40vw;
+    height: 50vh;
+    background-color: var(--main-color);
+    display: flex;
+}
+
+#team1 {
+    order: 1; 
 }
 
 #team2 {
     order: 3;
+}
+
+#team1, #team2 {
     border: 2px solid black;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 25vw;
+    height: 25vh;
+    background-color: var(--accent-color);
 }
 
 .teamScoreBoard {
-    height: 20px;
-    width: 50px;
-    border: 2px solid red;
+    height: 40px;
+    width: 100px;
     margin: 0 auto;
+    padding: 20px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    font-size: 32px;
+}
+
+.pointBoard {
+    height: 80px;
+    width: 200px;
+    margin: 0 auto;
+    background-color: var(--main-title);
+    color: var(--dark-color);
+    font-size: 72px;
+    border: 3px dashed var(--main-color);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.strike1, .strike2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
+    color: var(--bg-color);
+}
+
+
+.round1, .round2 {
+    /* border: 2px solid black; */
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    text-align: center;
+    width: 15%;
+    margin: 0 auto;
+    /* display: flex; */
+    width: auto;
+    /* justify-content: space-evenly; */
+}
+
+.round1 {
+    order: 1;
+}
+
+.round2 {
+    order: 3;
+}
+
+.qAnda {
+    border: 2px solid black;
+    order: 2;
+    width: 85%;
+}
+
+.round1 h2, .round2 h2{
+    color: var(--dark-color);
+}
+
+.questionBanner {
+    height: 40px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: var(--main-title);
+    color: var(--dark-color);
+    font-size: 14px;
+    border: 3px dashed var(--main-color);
+    /* display: inline-block;
+    vertical-align: middle; */
+}
+
+.question {
+    display: inline-block;
+    vertical-align: middle;
 }

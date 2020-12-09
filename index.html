@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
     <title>2020 in Rewind</title>
 </head>
 <body>
@@ -30,6 +32,7 @@
               <li>If your answer is not on the board, your team earns a strike.</li>
               <li>Once a team reaches 3 stikes, the other team has a chance to steal the points by guessing one correct answer.</li>  
               <li>The team with the most points after 3 rounds wins.</li>
+              <li>Other variations: 1v1, timer</li>
           </ul>
           
           <form id="starting-form">
@@ -60,59 +63,87 @@
 
     <div id="main">
         <div id="board">
-            <section id="round">
+            <div class="round1">
                 <h2>
                     ROUND <span class="roundNum"></span>
                 </h2>
-                <input type="button" id="start-round" value="Start the Round!"/>
-                <p>Points: <span class="points"> </span></p> 
-            </section>
+            </div>
 
-            <section id="Question">
-                <p>Question: <span class="question"> </span></p>
-                
-            </section>
+            <div class="round2">
+                <h2>
+                    ROUND <span class="roundNum"></span>
+                </h2>
+            </div>
 
-            <section id="answer">
-                <form id="answer-form">
-                    <label>
-                        Answer:
-                        <input type="text" id="answer-box">
-                    </label>
-                    <input type="submit" id="submit-answer-button" value="Sumbit"/>
-                </form>
-                <p>Top Answers:</p>
-                <ol>
-                    <li class="answer1"></li>
-                    <li class="answer2"></li>
-                    <li class="answer3"></li>
-                    <li class="answer4"></li>
-                    <li class="answer5"></li>
-                    <li class="answer6"></li>
-                    <li class="answer7"></li>
-                    <li class="answer8"></li>
-                </ol>
-            </section>
+            <div class="qAnda">
+                <section id="startRound">
+                    
+                    <input type="button" id="start-round" value="Start the Round!"/>
+                    <p>Current Team:
+                        <span class="currentTeam">
+                            <!-- <input type="button" id="currentTeam1" value="TEAM 1"/>
+                            <input type="button" id="currentTeam2" value="TEAM 2"/> -->
+                        </span></p>
+                    
+                </section>
+
+                <section id="question">
+                    <!-- <p>Question: <span class="question"> </span></p> -->
+                    <div class="questionBanner">
+                        <!-- Question: -->
+                        <span class="question">Question: </span>
+                    </div>
+
+                </section>
+
+                <section id="answer">
+                    <form id="answer-form">
+                        <label>
+                            Answer:
+                            <input type="text" id="answer-box">
+                        </label>
+                        <input type="submit" id="submit-answer-button" value="Sumbit"/>
+                    </form>
+                    <p>Top Answers:</p>
+                    <ol>
+                        <li class="answer1"></li>
+                        <li class="answer2"></li>
+                        <li class="answer3"></li>
+                        <li class="answer4"></li>
+                        <li class="answer5"></li>
+                        <li class="answer6"></li>
+                        <li class="answer7"></li>
+                        <li class="answer8"></li>
+                    </ol>
+                </section>
+
+                <p>Points: 
+                    <div class="pointBoard">
+                        <span class="points"> </span>
+                    </div>
+                </p> 
+            </div>
+
         </div>
         
         <div id="team1">
             <h2>TEAM 1: <span class="teamName1"></span></h2>
             <ul id="team1Players"></ul>
-            <p>Score: </p>
+            <p>&nbsp;</p>
             <div class="teamScoreBoard">
                 <span class="score1"></span>
             </div>
-            <p>Strikes: <span class="strike1"></span></p>
+            <p><span class="strike1"> X X X</span></p>
         </div>
 
         <div id="team2">
             <h2>TEAM 2: <span class="teamName2"></span></h2>
             <ul id="team2Players"></ul>
-            <p>Score: </p>
+            <p>&nbsp;</p>
             <div class="teamScoreBoard">
                 <span class="score2"></span>
             </div>
-            <p>Strikes: <span class="strike2"></span></p>
+            <p><span class="strike2"> X X X</span></p>
         </div>
     </div>
 

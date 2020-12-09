@@ -65,7 +65,7 @@ $(() => {
     const $modal = $('#modal');
 
     const openModal = () => {
-    $modal.css('display', 'block'); //display: block to show modal
+    $modal.css('display', 'none'); //display: block to show modal
     }
     setTimeout(openModal, 1000);
 
@@ -169,10 +169,10 @@ $(() => {
     const checkAnswer = (teamNum, input) => {
         if (answers.includes(input)){
             const i = answers.indexOf(input);
-            answers.splice(i, 1);
             $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
+            answers.splice(i, 1);
             isRoundOver();
         }else{
             currentTeam.addStrike();
@@ -207,8 +207,8 @@ $(() => {
     const makeTeams = () => {
         team1 = new Team (1, $('#team1-name-box').val(), $('#team1-player1-box').val(), $('#team1-player2-box').val(), $('#team1-player3-box').val()) 
         team2 = new Team (2, $('#team2-name-box').val(), $('#team2-player1-box').val(), $('#team2-player2-box').val(), $('#team2-player3-box').val()) 
-        $('.teamName1').html(`Team ${team1.name}`);
-        $('.teamName2').html(`Team ${team2.name}`);
+        $('.teamName1').html(`${team1.name}`);
+        $('.teamName2').html(`${team2.name}`);
         for(let i = 0; i < team1.players.length; i++){
             const $li1 = $('<li>').text(team1.players[i]);
             const $li2 = $('<li>').text(team2.players[i]);
