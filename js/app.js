@@ -65,7 +65,7 @@ $(() => {
     const $modal = $('#modal');
 
     const openModal = () => {
-    $modal.css('display', 'none'); //display: block to show modal
+    $modal.css('display', 'block'); //display: block to show modal
     }
     setTimeout(openModal, 1000);
 
@@ -165,14 +165,16 @@ $(() => {
             updateScores();
         } 
     }
-    
+
     const checkAnswer = (teamNum, input) => {
         if (answers.includes(input)){
             const i = answers.indexOf(input);
-            $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
+            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
+            console.log(`before answers ${answers}`);
             answers.splice(i, 1);
+            console.log(`after answers ${answers}`);
             isRoundOver();
         }else{
             currentTeam.addStrike();
