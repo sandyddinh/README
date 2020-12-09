@@ -17,6 +17,8 @@
 body {
     box-sizing: border-box;
     background-image: linear-gradient(var(--bg-color), var(--accent-color));
+    font-family: 'Bebas Neue', cursive;
+    overflow: hidden;
 }
 
 h1 {
@@ -49,7 +51,8 @@ h2{
     margin: 150px auto;
     padding: 20px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    text-align: left;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .teams {
@@ -59,11 +62,42 @@ h2{
 }
 
 .teamSetUp {
-    height: 200px;
+    height: 160px;
     width: 200px;
-    /* display: flex; */
-    /* justify-content: space-around; */
 }
 
+#main {
+    display: flex;
+    justify-content: space-around;
+    /* position: relative; */
+    text-align: center;
+}
 
+#team1 {
+    order: 1;
+    border: 2px solid black;
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
+    
+}
 
+#board {
+    order: 2;
+    border: 2px solid black;
+}
+
+#team2 {
+    order: 3;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.teamScoreBoard {
+    height: 20px;
+    width: 50px;
+    border: 2px solid red;
+    margin: 0 auto;
+}

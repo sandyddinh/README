@@ -9,36 +9,47 @@
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Family Feud</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>2020 in Rewind</title>
 </head>
 <body>
     <header>
-        <h1>Family Feud</h1>
+        <h1>2020 in Rewind</h1>
     </header>
 
     <div id="modal">
       <div id="modal-textbox">
-        <h1>Welcome to Family Feud</h1>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum veniam earum, quas porro non ullam, odit nulla adipisci provident, rem voluptate atque aperiam quasi quo similique commodi sequi iure perspiciatis?</p>
+        <h1>2020 in Rewind</h1>
+          <p>How well do you think you know 2020? Players will try to match their answers with the most popular survey answers.</p>
+          <p>&nbsp;</p>
+          <h2>Here are the rules:</h2>
+          <ul>
+              <li>Each game consists of 3 rounds.</li>
+              <li>Try to guess the most popular answer to collect more points.</li>
+              <li>If your answer is not on the board, your team earns a strike.</li>
+              <li>Once a team reaches 3 stikes, the other team has a chance to steal the points by guessing one correct answer.</li>  
+              <li>The team with the most points after 3 rounds wins.</li>
+          </ul>
           
           <form id="starting-form">
             <label>
                 <div class="teams">
                     <div class="teamSetUp">
                         <p>Team 1:</p>
-                        <input type="text" id="team1-name-box">
+                        <input type="text" placeholder="team name" id="team1-name-box">
                         <p>Players:</p>
-                        <input type="text" id="team1-player1-box">
-                        <input type="text" id="team1-player2-box">
-                        <input type="text" id="team1-player3-box">
+                        <input type="text" placeholder="player 1 name" id="team1-player1-box">
+                        <input type="text" placeholder="player 2 name" id="team1-player2-box">
+                        <input type="text" placeholder="player 3 name"id="team1-player3-box">
                     </div>
                     <div class="teamSetUp">
                         <p>Team 2:</p>
-                        <input type="text" id="team2-name-box">
+                        <input type="text" placeholder="team name" id="team2-name-box">
                         <p>Players:</p>
-                        <input type="text" id="team2-player1-box">
-                        <input type="text" id="team2-player2-box">
-                        <input type="text" id="team2-player3-box">
+                        <input type="text" placeholder="player 1 name" id="team2-player1-box">
+                        <input type="text" placeholder="player 2 name" id="team2-player2-box">
+                        <input type="text" placeholder="player 3 name" id="team2-player3-box">
                     </div>
                 </div>
             </label>
@@ -47,59 +58,63 @@
       </div>
     </div>
 
-    <section id="round">
-        <h2>
-            ROUND <span class="roundNum"></span>
-        </h2>
-        <input type="button" id="start-round" value="Start the Round!"/>
-        <p>Current Team:
-            <span class="currentTeam">
-                <input type="button" id="currentTeam1" value="TEAM 1"/>
-                <input type="button" id="currentTeam2" value="TEAM 2"/>
-            </span></p>
-        <p>Points: <span class="points"> </span></p> 
-    </section>
+    <div id="main">
+        <div id="board">
+            <section id="round">
+                <h2>
+                    ROUND <span class="roundNum"></span>
+                </h2>
+                <input type="button" id="start-round" value="Start the Round!"/>
+                <p>Points: <span class="points"> </span></p> 
+            </section>
 
-    <section id="Question">
-        <p>Question: <span class="question"> </span></p>
+            <section id="Question">
+                <p>Question: <span class="question"> </span></p>
+                
+            </section>
+
+            <section id="answer">
+                <form id="answer-form">
+                    <label>
+                        Answer:
+                        <input type="text" id="answer-box">
+                    </label>
+                    <input type="submit" id="submit-answer-button" value="Sumbit"/>
+                </form>
+                <p>Top Answers:</p>
+                <ol>
+                    <li class="answer1"></li>
+                    <li class="answer2"></li>
+                    <li class="answer3"></li>
+                    <li class="answer4"></li>
+                    <li class="answer5"></li>
+                    <li class="answer6"></li>
+                    <li class="answer7"></li>
+                    <li class="answer8"></li>
+                </ol>
+            </section>
+        </div>
         
-    </section>
+        <div id="team1">
+            <h2>TEAM 1: <span class="teamName1"></span></h2>
+            <ul id="team1Players"></ul>
+            <p>Score: </p>
+            <div class="teamScoreBoard">
+                <span class="score1"></span>
+            </div>
+            <p>Strikes: <span class="strike1"></span></p>
+        </div>
 
-    <section id="answer">
-        <form id="answer-form">
-            <label>
-                Answer:
-                <input type="text" id="answer-box">
-            </label>
-            <input type="submit" id="submit-answer-button" value="Sumbit"/>
-        </form>
-        <p>Top Answers:</p>
-        <ol>
-            <li class="answer1"></li>
-            <li class="answer2"></li>
-            <li class="answer3"></li>
-            <li class="answer4"></li>
-            <li class="answer5"></li>
-            <li class="answer6"></li>
-            <li class="answer7"></li>
-            <li class="answer8"></li>
-        </ol>
-    </section>
-    
-    <div id="team1">
-        <h2>TEAM 1: <span class="teamName1"></span></h2>
-        <ul id="team1Players"></ul>
-        <p>Score: <span class="score1"></span></p>
-        <p>Strikes: <span class="strike1"></span></p>
+        <div id="team2">
+            <h2>TEAM 2: <span class="teamName2"></span></h2>
+            <ul id="team2Players"></ul>
+            <p>Score: </p>
+            <div class="teamScoreBoard">
+                <span class="score2"></span>
+            </div>
+            <p>Strikes: <span class="strike2"></span></p>
+        </div>
     </div>
-
-    <div id="team2">
-        <h2>TEAM 2: <span class="teamName2"></span></h2>
-        <ul id="team2Players"></ul>
-        <p>Score: <span class="score2"></span></p>
-        <p>Strikes: <span class="strike2"></span></p>
-    </div>
-
 
 
 

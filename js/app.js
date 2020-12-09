@@ -65,7 +65,7 @@ $(() => {
     const $modal = $('#modal');
 
     const openModal = () => {
-    $modal.css('display', 'block');
+    $modal.css('display', 'block'); //display: block to show modal
     }
     setTimeout(openModal, 1000);
 
