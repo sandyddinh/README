@@ -21,27 +21,27 @@ const questionCards = [
     {
         question: "What is the most popular tv show of 2020?",
         answer: [
-            ["Queens Gambit", 45],
-            ["The Undoing", 30],
-            ["The Last Dance", 25],
-            ["The Bachelor", 23],
-            ["The Crown", 17],
-            ["This is Us", 15],
-            ["Emily in Paris", 10],
-            ["Grey's Anatomy", 8]
+            ["Queens Gambit", 45, false],
+            ["The Undoing", 30, false],
+            ["The Last Dance", 25, false],
+            ["The Bachelor", 23, false],
+            ["The Crown", 17, false],
+            ["This is Us", 15, false],
+            ["Emily in Paris", 10, false],
+            ["Grey's Anatomy", 8, false]
         ]
     },
     {
         question: "What is the most popular song of 2020?",
         answer: [
-            ["a", 45],
-            ["b", 30],
-            ["c", 25],
-            ["d", 23],
-            ["e", 17],
-            ["f", 15],
-            ["g", 10],
-            ["h", 8]
+            ["a", 1, false],
+            ["b", 1, false],
+            ["c", 1, false],
+            ["d", 1, false],
+            ["e", 1, false],
+            ["f", 1, false],
+            ["g", 1, false],
+            ["h", 1, false]
         ]
     },
     {
@@ -86,7 +86,7 @@ $(() => {
     let team1 = null;
     let team2 = null;
     let totalPoints = 0;
-    let cardSet = 0;
+    let cardSet = 1;
     let answers = [];
     let currentTeam = null;
     let otherTeam = null;
@@ -98,6 +98,7 @@ $(() => {
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
             answers.push(`${questionCards[cardSet].answer[i][0]}`);
         }
+        console.log(answers);
     }
 
     const endGame = () => {
@@ -126,14 +127,22 @@ $(() => {
         team2.strikes = 0;
     }
 
-    const updateScores = () => {
-        $score1.html(`${team1.points}`);
-        $score2.html(`${team2.points}`);
+    const checkRound = () => {
         if (roundNum===3){
             endGame();
         }else{
             startNewRound();
         }
+    }
+
+    const updateScores = () => {
+        if (currentTeam === team1) {
+            team1.points += totalPoints;
+        } else {
+            team2.points += totalPoints;
+        }
+        $score1.html(`${team1.points}`);
+        $score2.html(`${team2.points}`);  
     }
 
     const stealPoints = () => {
@@ -150,6 +159,7 @@ $(() => {
             currentTeam.points += totalPoints;
         }
         updateScores();
+        checkRound();
     }
 
     const checkStrikes = () =>{
@@ -159,22 +169,45 @@ $(() => {
         }
     }
 
+    const roundOverAlert = () => {
+        alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`);
+    }
+
     const isRoundOver = () => {
-        if (answers===[]){
-            alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`)
+        let trueCount = 0;
+        for (let i = 0; i < questionCards[cardSet].answer.length; i++){
+            if (questionCards[cardSet].answer[i][2]){
+                trueCount++;
+                console.log(`trueCount = ${trueCount}`);
+            } 
+        }
+        if (trueCount === 8){
+            console.log(`trueCount = ${trueCount}`);
             updateScores();
-        } 
+            setTimeout(() => { alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`) }, 1000);
+            // alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`);
+            // roundOverAlert();
+            setTimeout(() => { checkRound() }, 1000);
+            // checkRound();
+        }
+        
+        // if (answers===[]){
+        //     alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`)
+        //     updateScores();
+        // } 
     }
 
     const checkAnswer = (teamNum, input) => {
         if (answers.includes(input)){
             const i = answers.indexOf(input);
+            questionCards[cardSet].answer[i][2] = true;
+            console.log(`updated ${questionCards[cardSet].answer[i]} to true`)
             $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
-            console.log(`before answers ${answers}`);
-            answers.splice(i, 1);
-            console.log(`after answers ${answers}`);
+            // console.log(`before answers ${answers}`);
+            // answers.splice(i, 1);
+            // console.log(`after answers ${answers}`);
             isRoundOver();
         }else{
             currentTeam.addStrike();
@@ -225,7 +258,7 @@ $(() => {
         $modal.css('display', 'none');
         $('.roundNum').html(`${roundNum}`);
         pickTeamToStart();
-        getAnswerList();
+        // getAnswerList();
     })
 
 })
