@@ -109,8 +109,11 @@ $(() => {
 
     //Event Listeners
     $closeEndBtn.on('click', closeEndModal);
-    $openStartModal.on('click', openModal);
-    $openStartModal.on('click', closeEndModal);
+    $openStartModal.on('click', (()=> {
+        location.reload();
+    }))
+    ;
+    // $openStartModal.on('click', closeEndModal);
 
     // ---------- Game ---------- //
     const $startingForm = $('#submit-button');
@@ -145,6 +148,15 @@ $(() => {
         console.log(answers);
     }
 
+
+
+    const clearBoard = () => {
+        for (let i = 0; i < 8; i++){
+            $(`.answer${i}`).html('');
+        }
+        $('.question').html('');
+    }
+
     const endGame = () => {
         let winnerMessage = null; 
         if (team1.points === team2.points){
@@ -154,16 +166,7 @@ $(() => {
         } else {
             winnerMessage = `3 rounds are over. With a total of ${team2.points} points, the winner is.......... ${team2.name} !!!`;
         }
-
         openEndModal(winnerMessage);
-        
-    }
-
-    clearBoard = () => {
-        for (let i = 0; i < 8; i++){
-            $(`.answer${i}`).html('');
-        }
-        $('.question').html('');
     }
 
     const startNewRound = () => {
