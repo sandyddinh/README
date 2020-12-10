@@ -134,6 +134,8 @@ $(() => {
         team1.strikes = 0;
         team2.strikes = 0;
         clearBoard();
+        $(`.strike1`).html('');
+        $(`.strike2`).html('');
     }
 
     const checkRound = () => {
@@ -161,14 +163,15 @@ $(() => {
             $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
-            alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`);
+            setTimeout(() => { alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`); }, 500);
             otherTeam.points += totalPoints;
         } else {
-            alert(`${otherTeam.name} got the incorrect answer! ${current.name} get the points!`);
+            setTimeout(() => { alert(`${otherTeam.name} got the incorrect answer! ${current.name} get the points!`); }, 500);
             currentTeam.points += totalPoints;
         }
-        updateScores();
-        checkRound();
+        $score1.html(`${team1.points}`);
+        $score2.html(`${team2.points}`); 
+        setTimeout(() => { checkRound() }, 1000);
     }
 
     const checkStrikes = () =>{
@@ -190,16 +193,8 @@ $(() => {
             console.log(`trueCount = ${trueCount}`);
             updateScores();
             setTimeout(() => { alert(`Round ${roundNum} is over. ${currentTeam.name} take the points!`) }, 1000);
-            // alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`);
-            // roundOverAlert();
             setTimeout(() => { checkRound() }, 1000);
-            // checkRound();
         }
-        
-        // if (answers===[]){
-        //     alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`)
-        //     updateScores();
-        // } 
     }
 
     const checkAnswer = (teamNum, input) => {
@@ -210,23 +205,18 @@ $(() => {
             $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
-            // console.log(`before answers ${answers}`);
-            // answers.splice(i, 1);
-            // console.log(`after answers ${answers}`);
             isRoundOver();
         }else{
+            let $strikes = $(`.strike${teamNum}`).text();
             currentTeam.addStrike();
+            $(`.strike${teamNum}`).html(`${$strikes} X`);
             alert (`Answer not on the board! ${currentTeam.name} get a strike. Total strikes: ${currentTeam.strikes}`);
-            $(`.strike${teamNum}`).html(`${currentTeam.strikes}`);
-            checkStrikes();
+            setTimeout(() => { checkStrikes() }, 500);
         }
     }
 
-
-
     $startRound.on('click', (event) => {
         event.preventDefault();
-        // clearBoard();
         $question.html(`${questionCards[cardSet].question}`);
         getAnswerList();
     })
@@ -265,7 +255,6 @@ $(() => {
         $modal.css('display', 'none');
         $('.roundNum').html(`${roundNum}`);
         pickTeamToStart();
-        // getAnswerList();
     })
 
 })
