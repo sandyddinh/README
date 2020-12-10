@@ -128,7 +128,7 @@ $(() => {
         const teamHolder = currentTeam;
         currentTeam = otherTeam;
         otherTeam = teamHolder;
-        $currentTeam.html(`Team ${currentTeam.name}`);
+        $currentTeam.html(`${currentTeam.name}`);
         totalPoints = 0;
         $points.html(`${totalPoints}`);
         team1.strikes = 0;
@@ -166,7 +166,8 @@ $(() => {
             setTimeout(() => { alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`); }, 500);
             otherTeam.points += totalPoints;
         } else {
-            setTimeout(() => { alert(`${otherTeam.name} got the incorrect answer! ${current.name} get the points!`); }, 500);
+            console.log(`Other team guessed wrong`);
+            alert(`${otherTeam.name} got the incorrect answer! ${currentTeam.name} get the points!`);
             currentTeam.points += totalPoints;
         }
         $score1.html(`${team1.points}`);

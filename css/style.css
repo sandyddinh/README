@@ -27,6 +27,7 @@ h1 {
     color: #ED6A5A;
     text-align: center;
     margin: 20px;
+    font-size: 72px;
 }
 
 h2{
@@ -101,7 +102,7 @@ h2{
     justify-content: center;
     flex-direction: column;
     width: 25vw;
-    height: 25vh;
+    height: 35vh;
     background-color: var(--accent-color);
 }
 
@@ -226,4 +227,7 @@ ul {
     /* width: 300px; */
     padding: 20px 30px;
 }
-    
+
+.currentTeam {
+    text-decoration: underline wavy var(--main-color);
+}
