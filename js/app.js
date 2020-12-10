@@ -95,6 +95,7 @@ $(() => {
 
     // TO DO: Use MAP??
     const getAnswerList = () => {
+        answers = [];
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
             answers.push(`${questionCards[cardSet].answer[i][0]}`);
         }
@@ -112,6 +113,13 @@ $(() => {
         
     }
 
+    clearBoard = () => {
+        for (let i = 0; i < 8; i++){
+            $(`.answer${i}`).html('');
+        }
+        $('.question').html('');
+    }
+
     const startNewRound = () => {
         roundNum++;
         $('.roundNum').html(`${roundNum}`);
@@ -125,6 +133,7 @@ $(() => {
         $points.html(`${totalPoints}`);
         team1.strikes = 0;
         team2.strikes = 0;
+        clearBoard();
     }
 
     const checkRound = () => {
@@ -152,10 +161,10 @@ $(() => {
             $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
-            alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steals the points!`);
+            alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`);
             otherTeam.points += totalPoints;
         } else {
-            alert(`${otherTeam.name} got the incorrect answer! ${current.name} gets the points!`);
+            alert(`${otherTeam.name} got the incorrect answer! ${current.name} get the points!`);
             currentTeam.points += totalPoints;
         }
         updateScores();
@@ -164,13 +173,9 @@ $(() => {
 
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
-            alert(`Team ${currentTeam.name} has 3 strikes! Team ${otherTeam.name} has a chance to steal the points!`);
+            alert(`Team ${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`);
             stealPoints();
         }
-    }
-
-    const roundOverAlert = () => {
-        alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`);
     }
 
     const isRoundOver = () => {
@@ -184,7 +189,7 @@ $(() => {
         if (trueCount === 8){
             console.log(`trueCount = ${trueCount}`);
             updateScores();
-            setTimeout(() => { alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`) }, 1000);
+            setTimeout(() => { alert(`Round ${roundNum} is over. ${currentTeam.name} take the points!`) }, 1000);
             // alert(`Round ${roundNum} is over. ${currentTeam.name} takes the points!`);
             // roundOverAlert();
             setTimeout(() => { checkRound() }, 1000);
@@ -211,15 +216,17 @@ $(() => {
             isRoundOver();
         }else{
             currentTeam.addStrike();
-            alert (`Answer not on the board! Team ${currentTeam.name} gets a strike. Total strikes: ${currentTeam.strikes}`);
+            alert (`Answer not on the board! ${currentTeam.name} get a strike. Total strikes: ${currentTeam.strikes}`);
             $(`.strike${teamNum}`).html(`${currentTeam.strikes}`);
             checkStrikes();
         }
     }
 
 
+
     $startRound.on('click', (event) => {
         event.preventDefault();
+        // clearBoard();
         $question.html(`${questionCards[cardSet].question}`);
         getAnswerList();
     })
