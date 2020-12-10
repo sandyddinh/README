@@ -21,14 +21,14 @@ const questionCards = [
     {
         question: "What is the most popular tv show of 2020?",
         answer: [
-            ["Queens Gambit", 45, false],
-            ["The Undoing", 30, false],
-            ["The Last Dance", 25, false],
-            ["The Bachelor", 23, false],
-            ["The Crown", 17, false],
-            ["This is Us", 15, false],
-            ["Emily in Paris", 10, false],
-            ["Grey's Anatomy", 8, false]
+            ["aa", 45, false],
+            ["bb", 30, false],
+            ["cc", 25, false],
+            ["dd", 23, false],
+            ["ee", 17, false],
+            ["ff", 15, false],
+            ["gg", 10, false],
+            ["hh", 8, false]
         ]
     },
     {
@@ -47,27 +47,70 @@ const questionCards = [
     {
         question: "What is the most popular movie of 2020?",
         answer: [
-            ["1", 45],
-            ["2", 30],
-            ["3", 25],
-            ["4", 23],
-            ["5", 17],
-            ["6", 15],
-            ["7", 10],
-            ["8", 8]
+            ["1", 45, false],
+            ["2", 30, false],
+            ["3", 25, false],
+            ["4", 23, false],
+            ["5", 17, false],
+            ["6", 15, false],
+            ["7", 10, false],
+            ["8", 8, false]
         ]
     }
 ]
 
 
 $(() => {
-    // ---------- Modal ---------- //
+    // ---------- Start Game Modal ---------- //
     const $modal = $('#modal');
 
     const openModal = () => {
-    $modal.css('display', 'block'); //display: block to show modal
+        $modal.css('display', 'block'); //display: block to show modal
     }
     setTimeout(openModal, 1000);
+
+
+    // ---------- Help Modal ---------- //
+    //Grabbing Elements
+    const $openHelpBtn = $('#openHelpModal');
+    const $help = $('#help');
+    const $closeHelpBtn = $('#closeHelpModal');
+
+    //Event Handlers
+    const openHelpModal = () => {
+        $help.css('display', 'block');
+    }
+
+    const closeHelpModal = () => {
+        $help.css('display', 'none');
+    }
+
+    //Event Listeners
+    $openHelpBtn.on('click', openHelpModal);
+
+    $closeHelpBtn.on('click', closeHelpModal);
+
+
+    // ---------- End Of Game Modal ---------- //
+    //Grabbing Elements
+    const $endModal = $('#endModal');
+    const $closeEndBtn = $('#closeEndModal');
+    const $openStartModal = $('#openStartModal');
+
+    //Event Handlers
+    const openEndModal = (message) => {
+        $('.message').html(`${message}`);
+        $endModal.css('display', 'block');
+    }
+
+    const closeEndModal = () => {
+        $endModal.css('display', 'none');
+    }
+
+    //Event Listeners
+    $closeEndBtn.on('click', closeEndModal);
+    $openStartModal.on('click', openModal);
+    $openStartModal.on('click', closeEndModal);
 
     // ---------- Game ---------- //
     const $startingForm = $('#submit-button');
@@ -86,7 +129,7 @@ $(() => {
     let team1 = null;
     let team2 = null;
     let totalPoints = 0;
-    let cardSet = 1;
+    let cardSet = 0;
     let answers = [];
     let currentTeam = null;
     let otherTeam = null;
@@ -103,13 +146,16 @@ $(() => {
     }
 
     const endGame = () => {
+        let winnerMessage = null; 
         if (team1.points === team2.points){
-            alert(`3 rounds are over and it's a tie with a total of ${team1.points} points!!`)
+            winnerMessage = `3 rounds are over and it's a tie with a total of ${team1.points} points!!`;
         } else if (team1.points > team2.points) {
-            alert(`3 rounds are over. With a total of ${team1.points} points, the winner is.......... ${team1.name} !!!`)
+            winnerMessage = `3 rounds are over. With a total of ${team1.points} points, the winner is.......... ${team1.name} !!!`;
         } else {
-            alert(`3 rounds are over. With a total of ${team2.points} points, the winner is.......... ${team2.name} !!!`)
+            winnerMessage = `3 rounds are over. With a total of ${team2.points} points, the winner is.......... ${team2.name} !!!`;
         }
+
+        openEndModal(winnerMessage);
         
     }
 
@@ -131,6 +177,7 @@ $(() => {
         $currentTeam.html(`${currentTeam.name}`);
         totalPoints = 0;
         $points.html(`${totalPoints}`);
+        $('.question').html(`Click Start Round to begin`);
         team1.strikes = 0;
         team2.strikes = 0;
         clearBoard();
@@ -139,7 +186,7 @@ $(() => {
     }
 
     const checkRound = () => {
-        if (roundNum===3){
+        if (roundNum===1){
             endGame();
         }else{
             startNewRound();
@@ -160,7 +207,7 @@ $(() => {
         const answerToSteal = prompt(`${otherTeam.name}, what is your answer to steal the points?`);
         if (answers.includes(answerToSteal)){
             const i = answers.indexOf(answerToSteal);
-            $(`.answer${i+1}`).html(`${questionCards[cardSet].answer[i][0]}`);
+            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
             setTimeout(() => { alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`); }, 500);
@@ -177,6 +224,7 @@ $(() => {
 
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
+            // setTimeout(() => { alert(`Team ${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`); }, 1000);
             alert(`Team ${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`);
             stealPoints();
         }
@@ -203,7 +251,7 @@ $(() => {
             const i = answers.indexOf(input);
             questionCards[cardSet].answer[i][2] = true;
             console.log(`updated ${questionCards[cardSet].answer[i]} to true`)
-            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]}`);
+            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
             isRoundOver();
@@ -218,7 +266,7 @@ $(() => {
 
     $startRound.on('click', (event) => {
         event.preventDefault();
-        $question.html(`${questionCards[cardSet].question}`);
+        $question.html(`We asked 100 people, ${questionCards[cardSet].question}`);
         getAnswerList();
     })
 
@@ -234,7 +282,7 @@ $(() => {
         randomTeamNum === 1 ? (otherTeamNum = 2) : (otherTeamNum = 1);
         currentTeam = eval(`team${randomTeamNum}`);
         otherTeam = eval(`team${otherTeamNum}`);
-        $currentTeam.html(`  ${currentTeam.name}  `);
+        $currentTeam.html(`${currentTeam.name} &nbsp`);
     }
 
     const makeTeams = () => {

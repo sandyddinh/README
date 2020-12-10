@@ -16,6 +16,25 @@
     <title>2020 in Rewind</title>
 </head>
 <body>
+
+    <button id="openHelpModal">?</button>
+    <div id="help">
+      <div id="help-textbox">
+        <a id="closeHelpModal" href="#">Close</a>
+        <h1>Rules</h1>
+          <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.  
+          </p>
+          <p>
+            Quisquam excepturi voluptate quae obcaecati reiciendis accusamus eum debitis!
+          </p> 
+          <p>
+            Debitis optio corrupti assumenda nulla dignissimos distinctio autem, labore deleniti, dolor, est maiores!
+          </p>
+      </div>
+    </div>
+
+
     <header>
         <h1>2020 in Rewind</h1>
     </header>
@@ -56,7 +75,7 @@
                     </div>
                 </div>
             </label>
-            <input type="submit" id="submit-button" value="Sumbit"/>
+            <input type="submit" id="submit-button" value="Let's Play!"/>
         </form>
       </div>
     </div>
@@ -103,7 +122,7 @@
                         <input type="submit" id="submit-answer-button" value="Answer"/>
                     </form>
                     <div class="topAnswers">
-                        <p>Top Answers:</p>
+                        <p>Survey Says!</p>
                         <ol>
                             <li class="answer0"></li>
                             <li class="answer1"></li>
@@ -117,11 +136,11 @@
                     </div>
                 </section>
 
-                <p>Points: 
+                <!-- <p>Points:  -->
                     <div class="pointBoard">
                         <span class="points"> </span>
                     </div>
-                </p> 
+                <!-- </p>  -->
             </div>
 
         </div>
@@ -150,6 +169,21 @@
             </div>
         </div>
     </div>
+
+    
+    <div id="endModal">
+      <div id="end-textbox">
+        <a id="closeEndModal" href="#">Close</a>
+        <h1>And the winner is...</h1>
+          <p class="message">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.  
+          </p>
+          <p>&nbsp;</p>
+          <a id="closeEndModal" href="#">Close</a>
+          <a id="openStartModal" href="#">Start New Game</a>
+      </div>
+    </div>
+
 
 
 
