@@ -234,7 +234,7 @@ $(() => {
         randomTeamNum === 1 ? (otherTeamNum = 2) : (otherTeamNum = 1);
         currentTeam = eval(`team${randomTeamNum}`);
         otherTeam = eval(`team${otherTeamNum}`);
-        $currentTeam.html(`Team ${currentTeam.name}`);
+        $currentTeam.html(`  ${currentTeam.name}  `);
     }
 
     const makeTeams = () => {
