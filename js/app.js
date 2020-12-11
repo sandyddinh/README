@@ -185,7 +185,7 @@ $(() => {
     }
 
     const checkRound = () => {
-        if (roundNum===1){
+        if (roundNum===3){
             endGame();
         }else{
             startNewRound();
