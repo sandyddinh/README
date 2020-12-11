@@ -53,6 +53,8 @@ The development plan was to start off with very basic HTML, no CSS, and a lot of
 * Add some modals.
 * Style the game!
 
+<img src="/img/rules.png" width="80%" >
+
 #### MVP
 
 * Answer one round of questions
