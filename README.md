@@ -67,12 +67,44 @@ If I had time I would have...
 * Checked to see if the answer is already on the board.
 * Allowed users to select how many players per team.
 * Added a rule where one player would face off with another player from the other team.
-* Actually surveyed people!
+* Actually conducted a survey!
 
 ## Challenges:
 
 I had a hard time figuring out the best way to keep track of the 'current team' and the 'other team'. I explored a couple of options such as using buttons - as I was implementing this realized this wouldn't work if user erroneously switches the teams at the wrong time.
 
+## Question and Answer Key:
+<details>
+  <summary>So that you can try all the features. Click to expand!</summary>
+  
+  1. Question: What was the quickest grocery store item to sell out in March?
+     * Toilet paper
+     * and sanitizer
+     * Clorox wipes
+     * Canned food
+     * Pasta
+     * Soap
+     * Frozen Pizza
+     * Bottled Water
+  2. Question: What was the best Neflix Original?
+     * Tiger King
+     * Locke & Key
+     * Space Force
+     * Outer Banks
+     * Love is Blind
+     * The Queen's  Gambit
+     * Never Have I Ever
+     * Ratched
+  3. Question: What was the most downloaded iPhone app?
+       * Zoom
+       * TikTok
+       * Disney Plus
+       * Youtube
+       * Instagram
+       * Facebook
+       * Snapchat
+       * Messenger
+</details>
 
 
 ### App Demo: https://sandyddinh.github.io/README/
