@@ -98,8 +98,9 @@ $(() => {
     const $openStartModal = $('#openStartModal');
 
     //Event Handlers
-    const openEndModal = (message) => {
-        $('.message').html(`${message}`);
+    const openEndModal = (winningScore, winningTeam) => {
+        $('.winningScore').html(`${winningScore} points`);
+        $('.winningTeam').html(`${winningTeam}`);
         $endModal.css('display', 'block');
     }
 
@@ -158,22 +159,26 @@ $(() => {
     }
 
     const endGame = () => {
-        let winnerMessage = null; 
+        let winningScore = null; 
+        let winningTeam = null;
         if (team1.points === team2.points){
-            winnerMessage = `3 rounds are over and it's a tie with a total of ${team1.points} points!!`;
+            winningScore = `${team1.points}`;
+            winningTeam = `Both teams win!! (It's a tie!)`
         } else if (team1.points > team2.points) {
-            winnerMessage = `3 rounds are over. With a total of ${team1.points} points, the winner is.......... ${team1.name} !!!`;
+            winningScore = `${team1.points}`;
+            winningTeam = `${team1.name}`;
         } else {
-            winnerMessage = `3 rounds are over. With a total of ${team2.points} points, the winner is.......... ${team2.name} !!!`;
+            winningScore = `${team2.points}`
+            winningTeam = `${team2.name}`;
         }
-        openEndModal(winnerMessage);
+        openEndModal(winningScore, winningTeam);
     }
 
     const startNewRound = () => {
         roundNum++;
         $('.roundNum').html(`${roundNum}`);
         cardSet ++;
-        alert(`New Round is about to begin...`)
+        alert(`Are you ready for a new round to begin?...`)
         const teamHolder = currentTeam;
         currentTeam = otherTeam;
         otherTeam = teamHolder;
@@ -216,7 +221,6 @@ $(() => {
             setTimeout(() => { alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`); }, 500);
             otherTeam.points += totalPoints;
         } else {
-            console.log(`Other team guessed wrong`);
             alert(`${otherTeam.name} got the incorrect answer! ${currentTeam.name} get the points!`);
             currentTeam.points += totalPoints;
         }
@@ -228,7 +232,7 @@ $(() => {
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
             // setTimeout(() => { alert(`Team ${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`); }, 1000);
-            alert(`Team ${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`);
+            alert(`${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`);
             stealPoints();
         }
     }
@@ -253,7 +257,6 @@ $(() => {
         if (answers.includes(input)){
             const i = answers.indexOf(input);
             questionCards[cardSet].answer[i][2] = true;
-            console.log(`updated ${questionCards[cardSet].answer[i]} to true`)
             $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);

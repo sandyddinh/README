@@ -20,17 +20,23 @@
     <button id="openHelpModal">?</button>
     <div id="help">
       <div id="help-textbox">
-        <a id="closeHelpModal" href="#">Close</a>
-        <h1>Rules</h1>
-          <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.  
-          </p>
-          <p>
-            Quisquam excepturi voluptate quae obcaecati reiciendis accusamus eum debitis!
-          </p> 
-          <p>
-            Debitis optio corrupti assumenda nulla dignissimos distinctio autem, labore deleniti, dolor, est maiores!
-          </p>
+        <!-- <a id="closeHelpModal" href="#">Close</a> -->
+        <h1>Help</h1>
+            <h2>Here's a reminder of the rules:</h2>
+                <ol>
+                    <li>Each game consists of 3 rounds.</li>
+                    <li>The goal is to guess the most popular answer to earn more points.</li>
+                    <li>If your answer is not on the board, your team earns a strike.</li>
+                    <li>Three strikes? The other team has a chance to steal the points by guessing a remaining answer.</li>  
+                    <li>The team with the most points after 3 rounds wins.</li>
+                </ol>
+                <p>&nbsp;</p>
+            <h2>Looking to change things up?</h2>
+            <ol>
+                <li>Add a timer.</li>
+                <li>Have each team member compete 1v1 style.</li>
+            </ol>
+            <a id="closeHelpModal" href="#">Back to the game</a>
       </div>
     </div>
 
@@ -42,18 +48,21 @@
     <div id="modal">
       <div id="modal-textbox">
         <h1>2020 in Rewind</h1>
-          <p>How well do you think you know 2020? Players will try to match their answers with the most popular survey answers.</p>
+          <p>How well do you think you know 2020?</p>
+          <p>Teams compete to name the most popular responses to survey questions.</p>
+              
           <p>&nbsp;</p>
-          <h2>Here are the rules:</h2>
-          <ul>
-              <li>Each game consists of 3 rounds.</li>
-              <li>Try to guess the most popular answer to collect more points.</li>
-              <li>If your answer is not on the board, your team earns a strike.</li>
-              <li>Once a team reaches 3 stikes, the other team has a chance to steal the points by guessing one correct answer.</li>  
-              <li>The team with the most points after 3 rounds wins.</li>
-              <li>Other variations: 1v1, timer</li>
-          </ul>
-          
+          <div class="rules">
+            <h2>Here are the rules:</h2>
+            <ol>
+                <li>Each game consists of 3 rounds.</li>
+                <li>The goal is to guess the most popular answer to earn more points.</li>
+                <li>If your answer is not on the board, your team earns a strike.</li>
+                <li>Three strikes? The other team has a chance to steal the points by guessing a remaining answer.</li>  
+                <li>The team with the most points after 3 rounds wins.</li>
+            </ol>
+            </div>
+
           <form id="starting-form">
             <label>
                 <div class="teams">
@@ -173,11 +182,13 @@
     
     <div id="endModal">
       <div id="end-textbox">
-        <a id="closeEndModal" href="#">Close</a>
-        <h1>And the winner is...</h1>
-          <p class="message">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.  
-          </p>
+        <p>
+            With a total of 
+        </p>    
+        <h1 class="winningScore"></h1> 
+        
+        <p>the winner is...</p>
+          <h1 class="winningTeam"></h1>
           <p>&nbsp;</p>
           <a id="closeEndModal" href="#">Close</a>
           <a id="openStartModal" href="#">Start New Game</a>

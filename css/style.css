@@ -16,27 +16,42 @@
 
 body {
     box-sizing: border-box;
-    background-image: linear-gradient(var(--bg-color), var(--accent-color));
+    /* background-image: linear-gradient(var(--bg-color), var(--accent-color)); */
     font-family: 'Bebas Neue', cursive;
+    color: var(--dark-color);
     overflow: hidden;
     height: 100vh;
     text-align: center;
 
-    /* background-image: url("lets-play-bridge.jpg");
+    background-image: url("../img/clouds-background.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-position: center; */
+	background-position: center;
 }
 
+
+
 h1 {
-    color: #ED6A5A;
+    color: var(--main-title);
     text-align: center;
     margin: 20px;
     font-size: 72px;
+    -webkit-text-stroke: 0.01px var(--main-color);
+    font-style: italic;
 }
+
+/* header > h1 {
+    -webkit-text-stroke: 0.01px var(--main-color);
+    font-style: italic;
+} */
 
 h2{
     color: #F4F1BB;
+}
+
+.rules > h2 {
+    color: var(--dark-color);
+    /* -webkit-text-stroke: 0.01px var(--dark-color); */
 }
 
 #modal {
@@ -49,24 +64,36 @@ h2{
 	z-index: 1;
     overflow: auto;
     display: none;
+    overflow: hidden;
 }
 
 #modal-textbox {
-	background-color: var(--bg-color);
-	height: 500px;
-	width: 700px;
+	background-image: url("../img/clouds-background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	height: 700px;
+	width: 800px;
 	border-radius: 2px;
     margin: 150px auto;
-    padding: 20px;
+    padding: 20px 100px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    text-align: left;
+    text-align: center;
     font-family: 'Bebas Neue', cursive;
 }
 
+.rules, .teams {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* opacity: 50%; */
+    padding: 10px;
+}
+
 .teams {
+    text-align: center;
     display: flex;
     justify-content: space-around;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 .teamSetUp {
@@ -86,11 +113,12 @@ h2{
 
 #board {
     order: 2;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 40vw;
     height: 50vh;
     background-color: var(--main-color);
     display: flex;
+    box-shadow: 5px 10px var(--main-title);
 }
 
 #team1 {
@@ -102,7 +130,7 @@ h2{
 }
 
 #team1, #team2 {
-    border: 2px solid black;
+    border: 2px solid var(--bg-color);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -141,6 +169,9 @@ ul {
     padding: 0;
 }
 
+ol {
+    list-style-position: inside;
+ }
 .strikeBoard {
     height: 50px;
 }
@@ -174,7 +205,7 @@ ul {
 }
 
 .qAnda {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     order: 2;
     width: 85%;
     font-size: 20px;
@@ -200,15 +231,7 @@ ul {
     justify-content: center; 
 }
 
-.question {
-    /* display: inline-block;
-    vertical-align: middle; */
-    /* display: flex;
-    align-items: center;
-    justify-content: center;  */
-}
-
-#start-round {
+#start-round, #closeHelpModal, #closeEndModal, #openStartModal {
     font-family: 'Bebas Neue', cursive;
     color: var(--dark-color);
     background: var(--main-color);
@@ -219,9 +242,10 @@ ul {
     transition: all 0.4s ease 0s;
     margin: 10px 0 3px;
     width: 150px;
+    text-align: center;
 }
 
-#start-round:hover {
+#start-round:hover, #closeHelpModal:hover, #closeEndModal:hover, #openStartModal:hover {
     text-shadow: 0px 0px 6px var(--light-color);
     -webkit-box-shadow: 0px 5px 40px -10px var(--main-title);
     -moz-box-shadow: 0px 5px 40px -10px var(--main-title);
@@ -233,6 +257,12 @@ ul {
     list-style-position: inside;
     /* width: 300px; */
     padding: 20px 30px;
+}
+
+#startRound p {
+    color: var(--main-color);
+    -webkit-text-stroke: 1px var(--dark-color);
+    font-size: 26px;
 }
 
 .currentTeam {
@@ -276,19 +306,20 @@ ul {
 	height: 100%;
 	width: 100%;
 	z-index: 1;
-	/*This puts our modal in front of the body (which has a default z-index setting of `0`*/
 	overflow: auto;
-    /*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
     display: none;
 }
 
 #help-textbox {
-	background-color: white;
-	height: 350px;
-	width: 550px;
+	background-color: var(--dark-color);
+	height: 600px;
+	width: 600px;
     border-radius: 2px;
     margin: 150px auto;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    color: var(--light-color);
+    text-align: left;
+    padding: 20px;
 }
 
 #openHelpModal {
@@ -308,25 +339,37 @@ ul {
     height: 30px;
 }
 
+#openHelpModal:hover {
+    transform: scale(1.5);
+}
+
 #endModal {
-	background-color: rgba(0,0,0,0.4);
+	background-color: var(--bg-color);
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
 	z-index: 1;
-	/*This puts our modal in front of the body (which has a default z-index setting of `0`*/
 	overflow: auto;
-    /*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
     display: none;
+    overflow: hidden;
 }
 
 #end-textbox {
-	background-color: white;
-	height: 350px;
-	width: 550px;
+    background-image: url('../img/rainbow.jpg');
+    background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	height: 700px;
+	width: 900px;
     border-radius: 2px;
     margin: 150px auto;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    
+}
+
+.winningTeam {
+    padding: 50px;
 }
