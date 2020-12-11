@@ -196,8 +196,8 @@ ol {
 }
 
 .questionBanner {
-    height: 40px;
-    width: 90%;
+    height: 60px;
+    width: 100%;
     margin: 0 auto;
     background-color: var(--main-title);
     color: var(--dark-color);
@@ -206,6 +206,7 @@ ol {
     display: flex;
     align-items: center;
     justify-content: center; 
+    padding: 5px;
 }
 
 #start-round, #closeHelpModal, #closeEndModal, #openStartModal {
