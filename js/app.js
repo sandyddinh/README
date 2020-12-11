@@ -32,7 +32,7 @@ const questionCards = [
         ]
     },
     {
-        question: "What was your favorite Netflix original?",
+        question: "What was the best Netflix original?",
         answer: [
             ["Tiger King", 23, false],
             ["Locke & Key", 20, false],
@@ -139,7 +139,7 @@ $(() => {
         answers = [];
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
             answers.push(`${questionCards[cardSet].answer[i][0].toUpperCase()}`);
-            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
+            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`).css('color', '#363537');
             $(`.answer${i}`).hide();
         }
 
@@ -149,7 +149,7 @@ $(() => {
         for (let i = 0; i < 8; i++){
             $(`.answer${i}`).html('');
         }
-        $('.question').html('');
+        // $('.question').html('');
     }
 
     const endGame = () => {
@@ -179,7 +179,7 @@ $(() => {
         $currentTeam.html(`${currentTeam.name}`);
         totalPoints = 0;
         $points.html(`${totalPoints}`);
-        $('.question').html(`Click Start Round to begin`);
+        $('.question').html('Click Start Round to begin');
         team1.strikes = 0;
         team2.strikes = 0;
         clearBoard();
@@ -205,6 +205,15 @@ $(() => {
         $score2.html(`${team2.points}`);  
     }
 
+    const showRemainingAnswers = () => {
+        for (let i = 0; i < questionCards[cardSet].answer.length; i++){
+            if (questionCards[cardSet].answer[i][2] === false)
+                $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`).css('color', '#E37567');
+                $(`.answer${i}`).show(2000);
+        }
+        setTimeout(() => { checkRound() }, 4000);
+    }
+
     const stealPoints = () => {
         const answerToSteal = prompt(`${otherTeam.name}, what is your answer to steal the points?`);
         if (answers.includes(answerToSteal.toUpperCase())){
@@ -220,7 +229,10 @@ $(() => {
         }
         $score1.html(`${team1.points}`);
         $score2.html(`${team2.points}`); 
-        setTimeout(() => { checkRound() }, 1000);
+        setTimeout(() => { alert(`Are you ready to see the remaining answers?`) }, 1000);
+        setTimeout(() => { showRemainingAnswers() }, 1000);
+        // showRemainingAnswers();
+        // setTimeout(() => { checkRound() }, 1000);
     }
 
     const checkStrikes = () =>{
@@ -229,6 +241,8 @@ $(() => {
             stealPoints();
         }
     }
+
+
 
     const isRoundOver = () => {
         let trueCount = 0;
@@ -240,7 +254,9 @@ $(() => {
         if (trueCount === 8){
             updateScores();
             setTimeout(() => { alert(`Round ${roundNum} is over. ${currentTeam.name} take the points!`) }, 1000);
-            setTimeout(() => { checkRound() }, 1000);
+            setTimeout(() => { alert(`Are you ready to see the remaining answers?`) }, 1000);
+            showRemainingAnswers();
+            
         }
     }
 
