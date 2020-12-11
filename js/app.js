@@ -19,42 +19,42 @@ class Team {
 
 const questionCards = [
     {
-        question: "What is the most popular tv show of 2020?",
+        question: "What was the quickest grocery store item to sell out in March?",
         answer: [
-            ["aa", 45, false],
-            ["bb", 30, false],
-            ["cc", 25, false],
-            ["dd", 23, false],
-            ["ee", 17, false],
-            ["ff", 15, false],
-            ["gg", 10, false],
-            ["hh", 8, false]
+            ["toilet paper", 37, false],
+            ["hand sanitizer", 22, false],
+            ["clorox wipes", 15, false],
+            ["canned food", 9, false],
+            ["pasta", 6, false],
+            ["soap", 5, false],
+            ["frozen pizza", 4, false],
+            ["bottled water", 2, false]
         ]
     },
     {
-        question: "What is the most popular song of 2020?",
+        question: "What was your favorite Netflix original?",
         answer: [
-            ["a", 1, false],
-            ["b", 1, false],
-            ["c", 1, false],
-            ["d", 1, false],
-            ["e", 1, false],
-            ["f", 1, false],
-            ["g", 1, false],
-            ["h", 1, false]
+            ["Tiger King", 23, false],
+            ["Locke & Key", 20, false],
+            ["Space Force", 16, false],
+            ["Outer Banks", 15, false],
+            ["Love is Blind", 14, false],
+            ["The Queen's Gambit", 8, false],
+            ["Never Have I Ever", 2, false],
+            ["Ratched", 2, false]
         ]
     },
     {
-        question: "What is the most popular movie of 2020?",
+        question: "What was the most downloaded iPhone app?",
         answer: [
-            ["1", 45, false],
-            ["2", 30, false],
-            ["3", 25, false],
-            ["4", 23, false],
-            ["5", 17, false],
-            ["6", 15, false],
-            ["7", 10, false],
-            ["8", 8, false]
+            ["Zoom", 33, false],
+            ["TikTok", 17, false],
+            ["Disney Plus", 15, false],
+            ["YouTube", 15, false],
+            ["Instagram", 10, false],
+            ["Facebook", 7, false],
+            ["Snapchat", 2, false],
+            ["Messenger", 1, false]
         ]
     }
 ]

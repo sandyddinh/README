@@ -20,6 +20,7 @@ A game inspired by the classic *Family Fued*. In *2020 in Rewind* two teams comp
 
     Unsplash.com
     Coolors.co
+    Forbes.com
 
 ## Approach:
 
@@ -49,26 +50,28 @@ The development plan was to start off with very basic HTML, no CSS, and a lot of
 * Develop functions to keep track of points, strikes, answers, who's turn it is, etc.
 * Develop rest of functions (like stealing the points) to support the rules.
 * Populate the DOM with all game information.
+* Add some modals.
 * Style the game!
 
 #### MVP
 
-* MVP ONE
-* MVP Two
-* MVP Three 
-* MVP Four
+* Answer one round of questions
+* Extend the game to 3 rounds
+* Start a new game
 
 #### Stretch goals
 
-* Stretch goals ONE
-* Stretch goals Two
-* Stretch goals Three 
-* Stretch goals Four
+If I had time I would have...
+
+* Compared answers for partial match.
+* Checked to see if the answer is already on the board.
+* Allowed users to select how many players per team.
+* Added a rule where one player would face off with another player from the other team.
+* Actually surveyed people!
 
 ## Challenges:
 
-Small description of a challange you faced. 
-
+I had a hard time figuring out the best way to keep track of the 'current team' and the 'other team'. I explored a couple of options such as using buttons - as I was implementing this realized this wouldn't work if user erroneously switches the teams at the wrong time.
 
 
 
