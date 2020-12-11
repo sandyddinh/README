@@ -139,7 +139,10 @@ $(() => {
         answers = [];
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
             answers.push(`${questionCards[cardSet].answer[i][0].toUpperCase()}`);
+            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
+            $(`.answer${i}`).hide();
         }
+
     }
 
     const clearBoard = () => {
@@ -245,7 +248,8 @@ $(() => {
         if (answers.includes(input)){
             const i = answers.indexOf(input);
             questionCards[cardSet].answer[i][2] = true;
-            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
+            $(`.answer${i}`).show(1000);
+            // $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
             isRoundOver();
