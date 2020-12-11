@@ -7,7 +7,7 @@
 
 ## Concept:
 
-A game inspired by the classic *Family Fued*. In *2020 in Rewind* two teams compete to guess the most popular answer based on surveys (note, unfortunely there were no actual surveys completed). The team with the highest number of points after 3 rounds will be declared the winners.
+A game inspired by the classic *Family Feud*. In *2020 in Rewind* two teams compete to guess the most popular answer based on surveys (note, unfortunely there were no actual surveys completed). The team with the highest number of points after 3 rounds will be declared the winners.
 
 ## Technologies Used:
 
