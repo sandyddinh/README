@@ -1,13 +1,13 @@
 
 # App Title: 
 
-### App Demo: www.linkegoeshere.com
+### App Demo: https://sandyddinh.github.io/README/
 
 ---
 
 ## Concept:
 
-A full description of what your project is all about 
+A game inspired by the classic *Family Fued*. In *2020 in Rewind* two teams compete to guess the most popular answer based on surveys (note, unfortunely there were no actual surveys completed). The team with the highest number of points after 3 rounds will be declared the winners.
 
 ## Technologies Used:
 
@@ -19,41 +19,37 @@ A full description of what your project is all about
 ##### Credits:
 
     Unsplash.com
-    unDraw.co
-    Slideshow Repo
+    Coolors.co
 
 ## Approach:
 
 #### Overview
-Description of how you approach the game development. Here you will add all the development phases, from wireframes to code sample. 
+I started off by writing all of the rules and combinations for a traditional game of *Family Feud*. After evaluating all of the rules and time constraint, I decided to shift my idea to an original game, inspired by *Family Feud* - alas, *2020 in Rewind* came to fruition. I drew my wireframes with the colours blue, yellow, and orange in mind. Upon reflecting on my game, and 2020, I decided I wanted a relaxing and happy UX so I chose a beautiful cloud background, used clean lines, and subtle styling.
 
 #### Wireframe
 
-<img src="https://res.cloudinary.com/duprwuo4j/image/upload/v1601671860/DesignOne_uevwek.png" width="80%" >
+<img src="/img/wireframe.png" width="80%" >
 
 Color Pallet:
 
 ```
-    #5d5174
-    #9680a4
-    #e2deea
-    #545454
-    #e4e0dd
-    #ffffff
+    #9BC1BC
+    #5CA4A9
+    #F4F1BB
+    #E37567
+    #E6EBE0
+    #363537
 ```
-
-#### User stories
-
-As an user I expect to see a button bla bla bla bla
 
 #### Development Plan 
 
-description of your development plan 
+The development plan was to start off with very basic HTML, no CSS, and a lot of JavaScript. Once most of the functionality was in place and working with the console, I focused on populating the DOM and HTML and CSS for visual effects.
 
-* Development Plan  ONE
-* Development Plan  Two
-* Development Plan  Three 
-* Development Plan  Four
+* Develop the Team object and minimum functions required to compare an input to a list of answers.
+* Develop functions to keep track of points, strikes, answers, who's turn it is, etc.
+* Develop rest of functions (like stealing the points) to support the rules.
+* Populate the DOM with all game information.
+* Style the game!
 
 #### MVP
 
@@ -76,4 +72,4 @@ Small description of a challange you faced.
 
 
 
-### App Demo: www.linkegoeshere.com
+### App Demo: https://sandyddinh.github.io/README/
