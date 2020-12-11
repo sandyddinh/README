@@ -1,202 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="js/app.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap"
+      rel="stylesheet"
+    />
     <title>2020 in Rewind</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <button id="openHelpModal">?</button>
     <div id="help">
       <div id="help-textbox">
-        <!-- <a id="closeHelpModal" href="#">Close</a> -->
         <h1>Help</h1>
-            <h2>Here's a reminder of the rules:</h2>
-                <ol>
-                    <li>Each game consists of 3 rounds.</li>
-                    <li>The goal is to guess the most popular answer to earn more points.</li>
-                    <li>If your answer is not on the board, your team earns a strike.</li>
-                    <li>Three strikes? The other team has a chance to steal the points by guessing a remaining answer.</li>  
-                    <li>The team with the most points after 3 rounds wins.</li>
-                </ol>
-                <p>&nbsp;</p>
-            <h2>Looking to change things up?</h2>
-            <ol>
-                <li>Add a timer.</li>
-                <li>Have each team member compete 1v1 style.</li>
-            </ol>
-            <a id="closeHelpModal" href="#">Back to the game</a>
+        <h2>Here's a reminder of the rules:</h2>
+        <ol>
+          <li>Each game consists of 3 rounds.</li>
+          <li>
+            The goal is to guess the most popular answer to earn more points.
+          </li>
+          <li>If your answer is not on the board, your team earns a strike.</li>
+          <li>
+            Three strikes? The other team has a chance to steal the points by
+            guessing a remaining answer.
+          </li>
+          <li>The team with the most points after 3 rounds wins.</li>
+        </ol>
+        <p>&nbsp;</p>
+        <h2>Looking to change things up?</h2>
+        <ol>
+          <li>Add a timer.</li>
+          <li>Have each team member compete 1v1 style.</li>
+        </ol>
+        <a id="closeHelpModal" href="#">Back to the game</a>
       </div>
     </div>
 
-
     <header>
-        <h1>2020 in Rewind</h1>
+      <h1>2020 in Rewind</h1>
     </header>
 
     <div id="modal">
       <div id="modal-textbox">
         <h1>2020 in Rewind</h1>
-          <p>How well do you think you know 2020?</p>
-          <p>Teams compete to name the most popular responses to survey questions.</p>
-              
-          <p>&nbsp;</p>
-          <div class="rules">
-            <h2>Here are the rules:</h2>
-            <ol>
-                <li>Each game consists of 3 rounds.</li>
-                <li>The goal is to guess the most popular answer to earn more points.</li>
-                <li>If your answer is not on the board, your team earns a strike.</li>
-                <li>Three strikes? The other team has a chance to steal the points by guessing a remaining answer.</li>  
-                <li>The team with the most points after 3 rounds wins.</li>
-            </ol>
-            </div>
+        <p>How well do you think you know 2020?</p>
+        <p>
+          Teams compete to name the most popular responses to survey questions.
+        </p>
 
-          <form id="starting-form">
-            <label>
-                <div class="teams">
-                    <div class="teamSetUp">
-                        <p>Team 1:</p>
-                        <input type="text" placeholder="team name" id="team1-name-box">
-                        <p>Players:</p>
-                        <input type="text" placeholder="player 1 name" id="team1-player1-box">
-                        <input type="text" placeholder="player 2 name" id="team1-player2-box">
-                        <input type="text" placeholder="player 3 name"id="team1-player3-box">
-                    </div>
-                    <div class="teamSetUp">
-                        <p>Team 2:</p>
-                        <input type="text" placeholder="team name" id="team2-name-box">
-                        <p>Players:</p>
-                        <input type="text" placeholder="player 1 name" id="team2-player1-box">
-                        <input type="text" placeholder="player 2 name" id="team2-player2-box">
-                        <input type="text" placeholder="player 3 name" id="team2-player3-box">
-                    </div>
-                </div>
-            </label>
-            <input type="submit" id="submit-button" value="Let's Play!"/>
+        <p>&nbsp;</p>
+        <div class="rules">
+          <h2>Here are the rules:</h2>
+          <ol>
+            <li>Each game consists of 3 rounds.</li>
+            <li>
+              The goal is to guess the most popular answer to earn more points.
+            </li>
+            <li>
+              If your answer is not on the board, your team earns a strike.
+            </li>
+            <li>
+              Three strikes? The other team has a chance to steal the points by
+              guessing a remaining answer.
+            </li>
+            <li>The team with the most points after 3 rounds wins.</li>
+          </ol>
+        </div>
+
+        <form id="starting-form">
+          <label>
+            <div class="teams">
+              <div class="teamSetUp">
+                <p>Team 1:</p>
+                <input
+                  type="text"
+                  placeholder="team name"
+                  id="team1-name-box"
+                />
+                <p>Players:</p>
+                <input
+                  type="text"
+                  placeholder="player 1 name"
+                  id="team1-player1-box"
+                />
+                <input
+                  type="text"
+                  placeholder="player 2 name"
+                  id="team1-player2-box"
+                />
+                <input
+                  type="text"
+                  placeholder="player 3 name"
+                  id="team1-player3-box"
+                />
+              </div>
+              <div class="teamSetUp">
+                <p>Team 2:</p>
+                <input
+                  type="text"
+                  placeholder="team name"
+                  id="team2-name-box"
+                />
+                <p>Players:</p>
+                <input
+                  type="text"
+                  placeholder="player 1 name"
+                  id="team2-player1-box"
+                />
+                <input
+                  type="text"
+                  placeholder="player 2 name"
+                  id="team2-player2-box"
+                />
+                <input
+                  type="text"
+                  placeholder="player 3 name"
+                  id="team2-player3-box"
+                />
+              </div>
+            </div>
+          </label>
+          <input type="submit" id="submit-button" value="Let's Play!" />
         </form>
       </div>
     </div>
 
     <section id="startRound">
-                    
-        <p>Current Team:
-            <span class="currentTeam"></span>
-        </p>
-        <input type="button" id="start-round" value="Start Round!"/>
-        
-        
+      <p>
+        Current Team:
+        <span class="currentTeam"></span>
+      </p>
+      <input type="button" id="start-round" value="Start Round!" />
     </section>
 
     <div id="main">
-        <div id="board">
-
-            
-            <div class="round1">
-                <h2>
-                    ROUND <span class="roundNum"></span>
-                </h2>
-            </div>
-
-            <div class="round2">
-                <h2>
-                    ROUND <span class="roundNum"></span>
-                </h2>
-            </div>
-
-            <div class="qAnda">
-                <section id="question">
-                    <div class="questionBanner">
-                        <span class="question">Click Start Round to begin</span>
-                    </div>
-
-                </section>
-
-                <section id="answer">
-                    <form id="answer-form">
-                        <label>
-                            <input type="text" id="answer-box">
-                        </label>
-                        <input type="submit" id="submit-answer-button" value="Answer"/>
-                    </form>
-                    <div class="topAnswers">
-                        <p>Survey Says!</p>
-                        <ol>
-                            <li class="answer0"></li>
-                            <li class="answer1"></li>
-                            <li class="answer2"></li>
-                            <li class="answer3"></li>
-                            <li class="answer4"></li>
-                            <li class="answer5"></li>
-                            <li class="answer6"></li>
-                            <li class="answer7"></li>
-                        </ol>
-                    </div>
-                </section>
-
-                <!-- <p>Points:  -->
-                    <div class="pointBoard">
-                        <span class="points"> </span>
-                    </div>
-                <!-- </p>  -->
-            </div>
-
-        </div>
-        
-        <div id="team1">
-            <h2>TEAM 1: <span class="teamName1"></span></h2>
-            <ul id="team1Players"></ul>
-            <p>&nbsp;</p>
-            <div class="teamScoreBoard">
-                <span class="score1"></span>
-            </div>
-            <div class="strikeBoard">
-                <span class="strike1"></span>
-            </div>
+      <div id="board">
+        <div class="round1">
+          <h2>ROUND <span class="roundNum"></span></h2>
         </div>
 
-        <div id="team2">
-            <h2>TEAM 2: <span class="teamName2"></span></h2>
-            <ul id="team2Players"></ul>
-            <p>&nbsp;</p>
-            <div class="teamScoreBoard">
-                <span class="score2"></span>
-            </div>
-            <div class="strikeBoard">
-                <span class="strike2"></span>
-            </div>
+        <div class="round2">
+          <h2>ROUND <span class="roundNum"></span></h2>
         </div>
-    </div>
 
-    
-    <div id="endModal">
-      <div id="end-textbox">
-        <p>
-            With a total of 
-        </p>    
-        <h1 class="winningScore"></h1> 
-        
-        <p>the winner is...</p>
-          <h1 class="winningTeam"></h1>
-          <p>&nbsp;</p>
-          <a id="closeEndModal" href="#">Close</a>
-          <a id="openStartModal" href="#">Start New Game</a>
+        <div class="qAnda">
+          <section id="question">
+            <div class="questionBanner">
+              <span class="question">Click Start Round to begin</span>
+            </div>
+          </section>
+
+          <section id="answer">
+            <form id="answer-form">
+              <label>
+                <input type="text" id="answer-box" />
+              </label>
+              <input type="submit" id="submit-answer-button" value="Answer" />
+            </form>
+            <div class="topAnswers">
+              <p>Survey Says!</p>
+              <ol>
+                <li class="answer0"></li>
+                <li class="answer1"></li>
+                <li class="answer2"></li>
+                <li class="answer3"></li>
+                <li class="answer4"></li>
+                <li class="answer5"></li>
+                <li class="answer6"></li>
+                <li class="answer7"></li>
+              </ol>
+            </div>
+          </section>
+
+          <div class="pointBoard">
+            <span class="points"> </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="team1">
+        <h2>TEAM 1: <span class="teamName1"></span></h2>
+        <ul id="team1Players"></ul>
+        <p>&nbsp;</p>
+        <div class="teamScoreBoard">
+          <span class="score1"></span>
+        </div>
+        <div class="strikeBoard">
+          <span class="strike1"></span>
+        </div>
+      </div>
+
+      <div id="team2">
+        <h2>TEAM 2: <span class="teamName2"></span></h2>
+        <ul id="team2Players"></ul>
+        <p>&nbsp;</p>
+        <div class="teamScoreBoard">
+          <span class="score2"></span>
+        </div>
+        <div class="strikeBoard">
+          <span class="strike2"></span>
+        </div>
       </div>
     </div>
 
+    <div id="endModal">
+      <div id="end-textbox">
+        <p>With a total of</p>
+        <h1 class="winningScore"></h1>
 
-
-
-</body>
+        <p>the winner is...</p>
+        <h1 class="winningTeam"></h1>
+        <p>&nbsp;</p>
+        <a id="closeEndModal" href="#">Close</a>
+        <a id="openStartModal" href="#">Start New Game</a>
+      </div>
+    </div>
+  </body>
 </html>

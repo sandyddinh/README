@@ -67,16 +67,16 @@ $(() => {
     const openModal = () => {
         $modal.css('display', 'block'); //display: block to show modal
     }
-    setTimeout(openModal, 1000);
+
+    openModal();
+    // setTimeout(openModal, 100);
 
 
     // ---------- Help Modal ---------- //
-    //Grabbing Elements
     const $openHelpBtn = $('#openHelpModal');
     const $help = $('#help');
     const $closeHelpBtn = $('#closeHelpModal');
 
-    //Event Handlers
     const openHelpModal = () => {
         $help.css('display', 'block');
     }
@@ -85,19 +85,16 @@ $(() => {
         $help.css('display', 'none');
     }
 
-    //Event Listeners
     $openHelpBtn.on('click', openHelpModal);
 
     $closeHelpBtn.on('click', closeHelpModal);
 
 
     // ---------- End Of Game Modal ---------- //
-    //Grabbing Elements
     const $endModal = $('#endModal');
     const $closeEndBtn = $('#closeEndModal');
     const $openStartModal = $('#openStartModal');
 
-    //Event Handlers
     const openEndModal = (winningScore, winningTeam) => {
         $('.winningScore').html(`${winningScore} points`);
         $('.winningTeam').html(`${winningTeam}`);
@@ -108,27 +105,26 @@ $(() => {
         $endModal.css('display', 'none');
     }
 
-    //Event Listeners
     $closeEndBtn.on('click', closeEndModal);
     $openStartModal.on('click', (()=> {
         location.reload();
     }))
     ;
-    // $openStartModal.on('click', closeEndModal);
+
 
     // ---------- Game ---------- //
     const $startingForm = $('#submit-button');
     const $startRound = $('#start-round');
-    const $currentTeam1 = $('#currentTeam1');
-    const $currentTeam2 = $('#currentTeam2');
+    // const $currentTeam1 = $('#currentTeam1');
+    // const $currentTeam2 = $('#currentTeam2');
     const $question = $('.question');
     const $answerForm = $('#answer-form');
     const $input = $('#answer-box');
     const $points = $('.points');
     const $score1 = $('.score1');
     const $score2 = $('.score2');
-    const $strike1 = $('.strike1');
-    const $strike2 = $('.strike2');
+    // const $strike1 = $('.strike1');
+    // const $strike2 = $('.strike2');
     const $currentTeam = $('.currentTeam');
     let team1 = null;
     let team2 = null;
@@ -139,17 +135,12 @@ $(() => {
     let otherTeam = null;
     let roundNum = 1;
 
-
-    // TO DO: Use MAP??
     const getAnswerList = () => {
         answers = [];
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
-            answers.push(`${questionCards[cardSet].answer[i][0]}`);
+            answers.push(`${questionCards[cardSet].answer[i][0].toUpperCase()}`);
         }
-        console.log(answers);
     }
-
-
 
     const clearBoard = () => {
         for (let i = 0; i < 8; i++){
@@ -213,8 +204,8 @@ $(() => {
 
     const stealPoints = () => {
         const answerToSteal = prompt(`${otherTeam.name}, what is your answer to steal the points?`);
-        if (answers.includes(answerToSteal)){
-            const i = answers.indexOf(answerToSteal);
+        if (answers.includes(answerToSteal.toUpperCase())){
+            const i = answers.indexOf(answerToSteal.toUpperCase());
             $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
@@ -231,7 +222,6 @@ $(() => {
 
     const checkStrikes = () =>{
         if (currentTeam.strikes === 3){
-            // setTimeout(() => { alert(`Team ${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`); }, 1000);
             alert(`${currentTeam.name} has 3 strikes! ${otherTeam.name} has a chance to steal the points!`);
             stealPoints();
         }
@@ -242,11 +232,9 @@ $(() => {
         for (let i = 0; i < questionCards[cardSet].answer.length; i++){
             if (questionCards[cardSet].answer[i][2]){
                 trueCount++;
-                console.log(`trueCount = ${trueCount}`);
             } 
         }
         if (trueCount === 8){
-            console.log(`trueCount = ${trueCount}`);
             updateScores();
             setTimeout(() => { alert(`Round ${roundNum} is over. ${currentTeam.name} take the points!`) }, 1000);
             setTimeout(() => { checkRound() }, 1000);
@@ -265,7 +253,7 @@ $(() => {
             let $strikes = $(`.strike${teamNum}`).text();
             currentTeam.addStrike();
             $(`.strike${teamNum}`).html(`${$strikes} X`);
-            alert (`Answer not on the board! ${currentTeam.name} get a strike. Total strikes: ${currentTeam.strikes}`);
+            alert (`Answer not on the board! ${currentTeam.name} get a strike. :( `);
             setTimeout(() => { checkStrikes() }, 500);
         }
     }
@@ -278,7 +266,7 @@ $(() => {
 
     const answer = $answerForm.on('submit', (event) => {
         event.preventDefault();
-        checkAnswer(currentTeam.number, $input.val());
+        checkAnswer(currentTeam.number, $input.val().toUpperCase());
         $(event.currentTarget).trigger('reset');
     })
 
