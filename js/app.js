@@ -213,10 +213,12 @@ $(() => {
         const answerToSteal = prompt(`${otherTeam.name}, what is your answer to steal the points?`);
         if (answers.includes(answerToSteal.toUpperCase())){
             const i = answers.indexOf(answerToSteal.toUpperCase());
-            $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
+            $(`.answer${i}`).show(1000);
+            questionCards[cardSet].answer[i][2] = true;
+            // $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
-            setTimeout(() => { alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`); }, 500);
+            setTimeout(() => { alert(`${otherTeam.name} got the correct answer! ${otherTeam.name} steal the points!`); }, 2000);
             otherTeam.points += totalPoints;
         } else {
             alert(`${otherTeam.name} got the incorrect answer! ${currentTeam.name} get the points!`);
@@ -224,8 +226,8 @@ $(() => {
         }
         $score1.html(`${team1.points}`);
         $score2.html(`${team2.points}`); 
-        setTimeout(() => { alert(`Are you ready to see the remaining answers?`) }, 1000);
-        setTimeout(() => { showRemainingAnswers() }, 1000);
+        setTimeout(() => { alert(`Are you ready to see the remaining answers?`) }, 3000);
+        setTimeout(() => { showRemainingAnswers() }, 4000);
     }
 
     const checkStrikes = () =>{
