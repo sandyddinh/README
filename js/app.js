@@ -6,9 +6,9 @@ class Team {
         this.points = 0;
         this.strikes = 0;
     }
-    play() {
-        submitAnswer();
-    }
+    // play() {
+    //     submitAnswer();
+    // }
     addPoints() {
         this.points += totalPoints;
     }
@@ -115,16 +115,12 @@ $(() => {
     // ---------- Game ---------- //
     const $startingForm = $('#submit-button');
     const $startRound = $('#start-round');
-    // const $currentTeam1 = $('#currentTeam1');
-    // const $currentTeam2 = $('#currentTeam2');
     const $question = $('.question');
     const $answerForm = $('#answer-form');
     const $input = $('#answer-box');
     const $points = $('.points');
     const $score1 = $('.score1');
     const $score2 = $('.score2');
-    // const $strike1 = $('.strike1');
-    // const $strike2 = $('.strike2');
     const $currentTeam = $('.currentTeam');
     let team1 = null;
     let team2 = null;
@@ -149,7 +145,6 @@ $(() => {
         for (let i = 0; i < 8; i++){
             $(`.answer${i}`).html('');
         }
-        // $('.question').html('');
     }
 
     const endGame = () => {
@@ -231,8 +226,6 @@ $(() => {
         $score2.html(`${team2.points}`); 
         setTimeout(() => { alert(`Are you ready to see the remaining answers?`) }, 1000);
         setTimeout(() => { showRemainingAnswers() }, 1000);
-        // showRemainingAnswers();
-        // setTimeout(() => { checkRound() }, 1000);
     }
 
     const checkStrikes = () =>{
@@ -241,8 +234,6 @@ $(() => {
             stealPoints();
         }
     }
-
-
 
     const isRoundOver = () => {
         let trueCount = 0;
@@ -265,7 +256,6 @@ $(() => {
             const i = answers.indexOf(input);
             questionCards[cardSet].answer[i][2] = true;
             $(`.answer${i}`).show(1000);
-            // $(`.answer${i}`).html(`${questionCards[cardSet].answer[i][0]} [${questionCards[cardSet].answer[i][1]}]`);
             totalPoints += questionCards[cardSet].answer[i][1];
             $points.html(`${totalPoints}`);
             isRoundOver();

@@ -146,7 +146,7 @@ h2{
     font-size: 72px;
     border: 3px dashed var(--main-color);
     position: absolute;
-    bottom: 0;
+    bottom: 10%;
     left: 0; 
     right: 0; 
     margin-left: auto; 
@@ -244,8 +244,9 @@ ol {
 }
 
 #startRound p {
-    color: var(--main-color);
-    -webkit-text-stroke: 1px var(--dark-color);
+    color: var(--dark-color);
+    /* color: var(--main-color); */
+    /* -webkit-text-stroke: 1px var(--dark-color); */
     font-size: 26px;
 }
 
@@ -296,7 +297,7 @@ ol {
 
 #help-textbox {
 	background-color: var(--dark-color);
-	height: 600px;
+	height: 520px;
 	width: 600px;
     border-radius: 2px;
     margin: 150px auto;
